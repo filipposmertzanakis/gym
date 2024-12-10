@@ -260,5 +260,7 @@ module.exports = mongoose.model('Booking', bookingSchema);
     console.log('Backend structure generated successfully!');
 }
 
+
+const x = 5
 // Run the script
 generateProjectStructure();
