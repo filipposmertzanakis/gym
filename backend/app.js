@@ -26,3 +26,4 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 const y = neggro//kos
 const x = 6 //alfo
+let c = 34;
