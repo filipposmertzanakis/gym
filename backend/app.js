@@ -24,6 +24,3 @@ app.use('/api/bookings', bookingRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-const y = neggro//kos
-const x = 6 //alfo
-let c = 34;
