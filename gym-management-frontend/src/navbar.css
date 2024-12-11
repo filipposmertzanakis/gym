@@ -1,10 +1,10 @@
 
 .navbar {
-  color: orange;
+  color: #27AE60;
   font-family: "Rubik", sans-serif;
   font-size: 20px;
   font-weight: bold;
-  background-color: #333; 
+  background-color: #2C3E50; 
   padding: 10px 30px;
   display: flex;
   justify-content: space-between;
@@ -13,7 +13,7 @@
 
 /* Style for links within the navbar */
 .navbar a {
-  color: white; 
+  color: #27AE60; 
   text-decoration: none; 
   margin: 0 15px; 
   padding: 10px; 
@@ -23,8 +23,8 @@
 
 /* Hover effect for links */
 .navbar a:hover {
-  background-color: orange; 
-  color: #333;
+  text-decoration: underline;
+  color: #27AE60;
   
 }
 
