@@ -12,15 +12,15 @@ function App() {
       <div className="App">
         
 
-      <div className='navbar'>
-        <p>DS_Gym</p>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/register">Register</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/services">Services</Link>
-        </nav>
-      </div>  
+        <div className='navbar'>
+          <p>DS_Gym</p>
+            <nav>
+              <Link to="/">Home</Link>
+              <Link to="/register">Register</Link>
+              <Link to="/login">Login</Link>
+              <Link to="/services">Services</Link>
+            </nav>
+        </div>  
 
         <Routes>
           <Route path="/register" element={<Register />} />
@@ -31,6 +31,7 @@ function App() {
       </div>
       
     </Router>
+    
     
   );
 }
