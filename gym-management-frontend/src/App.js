@@ -6,6 +6,7 @@ import Services from './components/Services';
 import AdminPage from './components/AdminPage';
 import DeleteUser from './components/DeleteUser';
 import UpdateUser from './components/UpdateUser';
+import CreateService from './components/CreateService';
 import './styles/App.css';
 import './styles/navbar.css';
 
@@ -51,6 +52,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/deleteuser" element={<DeleteUser/>} />
           <Route path="/updateUser" element={<UpdateUser/>} />
+          <Route path="/createService" element={<CreateService/>} />
           <Route path="/" element={<HomePage />} />
         </Routes>
       </div>
