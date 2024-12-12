@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes, Link, } from 'react-router-dom'
 import Register from './components/Register';
 import Login from './components/Login';
 import Services from './components/Services';
+import DeleteUser from './components/DeleteUser';
+import UpdateUser from './components/UpdateUser';
 import './styles/App.css';
 import './styles/navbar.css';
 
@@ -37,6 +39,7 @@ function App() {
             <Link to="/register">Register</Link>
             <Link to="/login">Login</Link>
             <Link to="/services">Services</Link>
+            <Link to="/updateUser">Admin page</Link>
           </nav>
         </div>
       
@@ -44,6 +47,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/deleteuser" element={<DeleteUser/>} />
+          <Route path="/updateUser" element={<UpdateUser/>} />
           <Route path="/" element={<HomePage />} />
         </Routes>
       </div>

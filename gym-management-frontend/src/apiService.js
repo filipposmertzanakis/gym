@@ -46,3 +46,21 @@ export const getUserBookings = async (userId) => {
     throw error.response.data;
   }
 };
+
+export const deleteUser = async (username) => {
+  try {
+    const response = await axios.delete(`${API_URL}/users`, { data: { username } });
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+export const updateUser = async (username, updatedData) => {
+  try {
+    const response = await axios.put(`${API_URL}/users`, { username, ...updatedData });
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
