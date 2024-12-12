@@ -5,11 +5,12 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     role: { type: String, enum: ['admin', 'user','gymnast'], default: 'user' },
     name: { type: String, required: true },
+    lastname: {type : String , required: true},
     email: { type: String, required: true, unique: true },
     address: {
-        country: String,
-        city: String,
-        street: String,
+        country: { type: String, required: true },
+        city: { type: String, required: true },
+        street: { type: String, required: true }
     },
     createdAt: { type: Date, default: Date.now },
 });

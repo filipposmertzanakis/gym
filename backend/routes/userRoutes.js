@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
+//create new user
 router.post('/', async (req, res) => {
     try {
         const newUser = new User(req.body);
