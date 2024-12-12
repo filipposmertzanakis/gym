@@ -1,3 +1,29 @@
+/*body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.page-container {
+  background-image: url("C:\Users\alfon\Desktop\test\gym\gym-management-frontend\photos\back.jpg"); 
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh; 
+  padding-top: 80px; 
+}
+
+.register-form {
+  background-color: rgba(0, 0, 0, 0.7); 
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+*/
+
+
 .form {
   display: flex;
   flex-direction: column;
