@@ -1,29 +1,23 @@
 import React, { useState } from 'react';
 import { deleteUser } from '../apiService';
 import { updateUser } from '../apiService';
+import { Link } from 'react-router-dom';
 const AdminPage = () =>  {
     const [activeTab, setActiveTab] = useState('deleteUser'); // default to DeleteUser
   
-    const renderContent = () => {
-      switch (activeTab) {
-        case 'deleteUser':
-          return <DeleteUser />;
-        case 'updateUser':
-          return <UpdateUser />;
-        default:
-          return <p>Select an option from the menu.</p>;
-      }
-    };
+    const deletepage = () => {
+      return <a href='./DeleteUser.js'></a>;
+    }; 
   
     return (
       <div className="admin-page">
         <h2>Admin Dashboard</h2>
         <div className="admin-menu">
-          <button onClick={() => setActiveTab('deleteUser')}>Delete User</button>
-          <button onClick={() => setActiveTab('updateUser')}>Update User</button>
+          <button><a href='deleteUser'>Delete User</a></button>
+          <button><a href='UpdateUser'>Update User</a></button>
         </div>
         <div className="admin-content">
-          {renderContent()}
+         {/* renderContent() */} 
         </div>
       </div>
     );
