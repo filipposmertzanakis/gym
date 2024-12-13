@@ -14,8 +14,10 @@ export const registerUser = async (userData) => {
 export const getPendingRegistrations = async () => {
   try {
     const response = await axios.get(`${API_URL}/users/pending`);
+    console.log('Response from /api/users/pending:', response);
     return response.data;
   } catch (error) {
+    console.error('Error fetching pending registrations:', error);
     throw error.response.data;
   }
 };
@@ -55,9 +57,10 @@ export const getServices = async () => {
     throw error.response.data;
   }
 };
-export const createService = async (serviceData) => {
+
+export const getUsers = async () => {
   try {
-    const response = await axios.post(`${API_URL}/services`, serviceData);
+    const response = await axios.get(`${API_URL}/Users`);
     return response.data;
   } catch (error) {
     throw error.response.data;
@@ -94,6 +97,15 @@ export const deleteUser = async (username) => {
 export const updateUser = async (username, updatedData) => {
   try {
     const response = await axios.put(`${API_URL}/users`, { username, ...updatedData });
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+export const createService = async (serviceData) => {
+  try {
+    const response = await axios.post(`${API_URL}/services`, serviceData);
     return response.data;
   } catch (error) {
     throw error.response.data;

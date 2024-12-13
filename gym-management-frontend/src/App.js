@@ -9,6 +9,7 @@ import UpdateUser from './components/UpdateUser';
 import './styles/App.css';
 import './styles/navbar.css';
 import Register_Requests from './components/Register_Requests';
+import CreateService from './components/CreateService';
 
 //EDV EINAI TO HOME PAGE DHLADH H SELIDA POY UA EMFANIZETAI KATHE FORA POY ANOIGEI TO SITE
 function HomePage() {
@@ -51,6 +52,7 @@ function App() {
           <Route path="/AdminPage" element={<AdminPage />} />
           <Route path="/services" element={<Services />} />
           <Route path="/AdminPage/DeleteUser"  element={<DeleteUser/>} />
+          <Route path="/AdminPage/CreateService"  element={<CreateService/>} />
           <Route path="/AdminPage/updateUser" element={<UpdateUser/>} />
           <Route path="/AdminPage/Register_Requests" element={<Register_Requests/>} />
           <Route path="/" element={<HomePage />} />

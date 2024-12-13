@@ -1,39 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { getPendingRegistrations } from '../apiService';
+import { getUsers } from '../apiService';
 
-const Register_Requests = () => {
-  const [requests, setRequests] = useState([]);
-  const [error, setError] = useState(null);
+const Users = () => {
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const fetchPendingRequests = async () => {
+    const fetchUsers = async () => {
       try {
-        const data = await getPendingRegistrations();
-        setRequests(data);
-      } catch (err) {
-        setError(err.message || 'Failed to fetch pending requests');
+        const data = await getUsers();
+        setUsers(data);
+      } catch (error) {
+        console.error('Error fetching USERS:', error);
       }
     };
 
-    fetchPendingRequests();
+    fetchUsers();
   }, []);
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   return (
     <div>
-      <h2>Pending Registration Requests</h2>
+      <h1>Users</h1>
       <ul>
-        {requests.map((request) => (
-          <li key={request._id}>
-            {request.name} {request.lastname} ({request.email})
-          </li>
+        {users.map((user) => (
+          <li key={user._id}>{user.name}</li>
         ))}
       </ul>
     </div>
   );
 };
 
-export default Register_Requests;
+export default Users;
