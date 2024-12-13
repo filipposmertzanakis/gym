@@ -11,6 +11,33 @@ export const registerUser = async (userData) => {
   }
 };
 
+export const getPendingRegistrations = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/users/pending`);
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+export const acceptRegistration = async (username) => {
+  try {
+    const response = await axios.put(`${API_URL}/users/accept`, { username });
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+export const declineRegistration = async (username) => {
+  try {
+    const response = await axios.delete(`${API_URL}/users/decline`, { data: { username } });
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
 export const loginUser = async (credentials) => {
   try {
     const response = await axios.post(`${API_URL}/users/login`, credentials);

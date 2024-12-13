@@ -1,23 +1,15 @@
 import React, { useState } from 'react';
-import { deleteUser } from '../apiService';
-import { updateUser } from '../apiService';
-import { Link } from 'react-router-dom';
+import DeleteUser from './DeleteUser';
+import UpdateUser from './UpdateUser';
+import { BrowserRouter as Router, Route, Routes, Link, } from 'react-router-dom';
 const AdminPage = () =>  {
-    const [activeTab, setActiveTab] = useState('deleteUser'); // default to DeleteUser
-  
-    const deletepage = () => {
-      return <a href='./DeleteUser.js'></a>;
-    }; 
-  
     return (
       <div className="admin-page">
         <h2>Admin Dashboard</h2>
         <div className="admin-menu">
-          <button><a href='deleteUser'>Delete User</a></button>
-          <button><a href='UpdateUser'>Update User</a></button>
-        </div>
-        <div className="admin-content">
-         {/* renderContent() */} 
+          <button><Link to='DeleteUser'>Delete User</Link></button>
+          <button><Link to='UpdateUser'>Update User</Link></button>
+          <button><Link to='Register_Requests'>Register_Requests</Link></button>
         </div>
       </div>
     );

@@ -103,4 +103,47 @@ router.delete('/', async (req, res) => {
     }
 });
 
+// Get Pending Registrations
+router.get('/pending', async (req, res) => {
+  try {
+    const pendingUsers = await User.find({ status: 'pending' });
+    res.status(200).json(pendingUsers);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Accept Registration
+router.put('/accept', async (req, res) => {
+  const { username } = req.body;
+  try {
+    const user = await User.findOneAndUpdate({ username }, { status: 'active' }, { new: true });
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Decline Registration
+router.delete('/decline', async (req, res) => {
+  const { username } = req.body;
+  try {
+    await User.findOneAndDelete({ username });
+    res.status(204).send();
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Route to fetch pending users
+router.get('/api/users/pending', async (req, res) => {
+    try {
+      const pendingUsers = await User.find({ status: 'pending' }); // Query based on `status`
+      res.status(200).json(pendingUsers);
+    } catch (error) {
+      console.error('Error fetching pending users:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
 module.exports = router;

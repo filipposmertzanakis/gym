@@ -24,8 +24,9 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const user = await registerUser(formData);
-      console.log('User registered:', user);
+      // Send registration request to admin
+      const response = await registerUser(formData);
+      console.log('Registration request sent:', response);
     } catch (error) {
       console.error('Registration error:', error);
     }

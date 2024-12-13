@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     lastname: {type : String , required: true},
     email: { type: String, required: true, unique: true },
+    status: { type: String, enum:['pending' , 'approved' , 'declined'] , default: 'pending' ,required :true }, 
     address: {
         country: { type: String, required: true },
         city: { type: String, required: true },
@@ -15,4 +16,4 @@ const userSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema)
