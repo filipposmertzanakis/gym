@@ -33,10 +33,11 @@ export const acceptRegistration = async (username) => {
 
 export const declineRegistration = async (username) => {
   try {
-    const response = await axios.delete(`${API_URL}/users/decline`, { data: { username } });
+    const response = await axios.put(`${API_URL}/users/decline`, { username });
     return response.data;
   } catch (error) {
-    throw error.response.data;
+    console.error('Error in declineRegistration:', error?.response?.data || error.message);
+    throw error.response?.data || error;
   }
 };
 

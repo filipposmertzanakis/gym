@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const users = await User.find();
-        const pendingUsers = users.filter(user => user.status === 'approved');
+        const pendingUsers = users.filter(user => user.status === 'pending');
         res.status(200).json(pendingUsers);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -117,15 +117,26 @@ router.put('/accept', async (req, res) => {
 });
 
 // Decline Registration
-router.delete('/decline', async (req, res) => {
-  const { username } = req.body;
-  try {
-    await User.findOneAndDelete({ username });
-    res.status(204).send();
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+router.put('/decline', async (req, res) => {
+    const { username } = req.body;
+    try {
+      if (!username) {
+        return res.status(400).json({ error: 'Username is required' });
+      }
+      const user = await User.findOneAndUpdate(
+        { username },
+        { status: 'declined' },
+        { new: true }
+      );
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      res.status(200).json(user);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: error.message });
+    }
+  });
 
 // Route to fetch pending users
 router.get('/api/users/pending', async (req, res) => {
