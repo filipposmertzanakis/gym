@@ -37,7 +37,7 @@ function App() {
     <Router>
       <div className="App">
         <div className="navbar">
-          <p>DS_Gym</p>
+          <Link to="/">DS_Gym</Link>
           <nav>
             <Link to="/">Home</Link>
             <Link to="/register">Register</Link>
