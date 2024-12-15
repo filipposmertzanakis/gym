@@ -6,6 +6,7 @@ import Services from './components/Services';
 import AdminPage from './components/AdminPage';
 import DeleteUser from './components/DeleteUser';
 import UpdateUser from './components/UpdateUser';
+import News from './components/News';
 import './styles/App.css';
 import './styles/navbar.css';
 import Register_Requests from './components/Register_Requests';
@@ -43,6 +44,7 @@ function App() {
             <Link to="/login">Login</Link>
             <Link to="/services">Services</Link>
             <Link to="/AdminPage">Admin page</Link>
+            <Link to="News">News</Link>
           </nav>
         </div>
       
@@ -51,6 +53,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/AdminPage" element={<AdminPage />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/News" element={<News/>} />
           <Route path="/AdminPage/DeleteUser"  element={<DeleteUser/>} />
           <Route path="/AdminPage/CreateService"  element={<CreateService/>} />
           <Route path="/AdminPage/updateUser" element={<UpdateUser/>} />
