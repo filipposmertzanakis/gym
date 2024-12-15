@@ -7,11 +7,13 @@ const CreateNews = () => {
     content: '',
     category: '',
     author: '', // You may fetch the user ID dynamically based on the logged-in user
+    image: null, // Added for file upload
   });
 
   const [newsArticles, setNewsArticles] = useState([]); // State to store fetched news articles
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [isFormVisible, setIsFormVisible] = useState(false); // State to control form visibility
 
   // Fetch all news articles on component mount
   useEffect(() => {
@@ -35,85 +37,127 @@ const CreateNews = () => {
     });
   };
 
+  // Handle file input change
+  const handleFileChange = (e) => {
+    setFormData({
+      ...formData,
+      image: e.target.files[0], // Store the file in the image field
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setSuccessMessage('');
 
-    try {
-      const dataToSend = {
-        ...formData,
-      };
+    const formDataToSend = new FormData();
+    formDataToSend.append('title', formData.title);
+    formDataToSend.append('content', formData.content);
+    formDataToSend.append('category', formData.category);
+    formDataToSend.append('author', formData.author);
+    if (formData.image) {
+      formDataToSend.append('image', formData.image);
+    }
 
-      const response = await axios.post('http://localhost:5000/api/news', dataToSend);
+    try {
+      const response = await axios.post('http://localhost:5000/api/news', formDataToSend, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
       setSuccessMessage('News article created successfully!');
       setFormData({
         title: '',
         content: '',
         category: '',
         author: '',
+        image: null,
       });
 
       // After successful creation, re-fetch the news articles
       const newResponse = await axios.get('http://localhost:5000/api/news');
       setNewsArticles(newResponse.data);
+
+      // Hide the form after successful submission
+      setIsFormVisible(false);
     } catch (error) {
       setError(error.response?.data?.error || 'An error occurred while creating the article.');
     }
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-      <h2>Create News Article</h2>
+    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <h2>News Articles</h2>
+
       {error && <div style={{ color: 'red' }}>{error}</div>}
       {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title:</label>
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            required
-          />
-        </div>
 
-        <div>
-          <label>Content:</label>
-          <textarea
-            name="content"
-            value={formData.content}
-            onChange={handleChange}
-            required
-          />
-        </div>
+      {/* Button to toggle the form visibility */}
+      <button onClick={() => setIsFormVisible(!isFormVisible)}>
+        {isFormVisible ? 'Cancel' : 'Create News Article'}
+      </button>
 
-        <div>
-          <label>Category:</label>
-          <input
-            type="text"
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            required
-          />
-        </div>
+      {/* Conditionally render the form based on isFormVisible state */}
+      {isFormVisible && (
+        <form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+          <div>
+            <label>Title:</label>
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div>
-          <label>Author (User ID):</label>
-          <input
-            type="text"
-            name="author"
-            value={formData.author}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div>
+            <label>Content:</label>
+            <textarea
+              name="content"
+              value={formData.content}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <button type="submit">Create News</button>
-      </form>
+          <div>
+            <label>Category:</label>
+            <input
+              type="text"
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
+          <div>
+            <label>Author (User ID):</label>
+            <input
+              type="text"
+              name="author"
+              value={formData.author}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div>
+            <label>Image:</label>
+            <input
+              type="file"
+              name="image"
+              onChange={handleFileChange}
+            />
+          </div>
+
+          <button type="submit">Create News</button>
+        </form>
+      )}
+
+      {/* Display the list of news articles */}
       <h3>All News Articles</h3>
       {newsArticles.length === 0 ? (
         <p>No news articles found.</p>
@@ -122,6 +166,7 @@ const CreateNews = () => {
           {newsArticles.map((article) => (
             <li key={article._id}>
               <h4>{article.title}</h4>
+              {article.image && <img src={`http://localhost:5000${article.image}`} alt={article.title} style={{ maxWidth: '200px' }} />}
               <p>{article.content}</p>
               <p><strong>Category:</strong> {article.category}</p>
               <p><strong>Author:</strong> {article.author}</p>
