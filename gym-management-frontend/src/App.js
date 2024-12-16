@@ -11,6 +11,7 @@ import './styles/App.css';
 import './styles/navbar.css';
 import Register_Requests from './components/Register_Requests';
 import CreateService from './components/CreateService';
+import { UserProvider } from './context/UserContext'
 
 //EDV EINAI TO HOME PAGE DHLADH H SELIDA POY UA EMFANIZETAI KATHE FORA POY ANOIGEI TO SITE
 function HomePage() {
@@ -34,34 +35,36 @@ function HomePage() {
 //EDV BAZOYME OTI THELOYME NA EMFANIZETAI SE OLES TIS SELIDES
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <div className="navbar">
-          <Link to="/">DS_Gym</Link>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/register">Register</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/services">Services</Link>
-            <Link to="/AdminPage">Admin page</Link>
-            <Link to="News">News</Link>
-          </nav>
+   <UserProvider>
+      <Router>
+        <div className="App">
+          <div className="navbar">
+            <Link to="/">DS_Gym</Link>
+            <nav>
+              <Link to="/">Home</Link>
+              <Link to="/register">Register</Link>
+              <Link to="/login">Login</Link>
+              <Link to="/services">Services</Link>
+              <Link to="/AdminPage">Admin page</Link>
+              <Link to="News">News</Link>
+            </nav>
+          </div>
+        
+          <Routes>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/AdminPage" element={<AdminPage />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/News" element={<News/>} />
+            <Route path="/AdminPage/DeleteUser"  element={<DeleteUser/>} />
+            <Route path="/AdminPage/CreateService"  element={<CreateService/>} />
+            <Route path="/AdminPage/updateUser" element={<UpdateUser/>} />
+            <Route path="/AdminPage/Register_Requests" element={<Register_Requests/>} />
+            <Route path="/" element={<HomePage />} />
+          </Routes>
         </div>
-      
-        <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/AdminPage" element={<AdminPage />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/News" element={<News/>} />
-          <Route path="/AdminPage/DeleteUser"  element={<DeleteUser/>} />
-          <Route path="/AdminPage/CreateService"  element={<CreateService/>} />
-          <Route path="/AdminPage/updateUser" element={<UpdateUser/>} />
-          <Route path="/AdminPage/Register_Requests" element={<Register_Requests/>} />
-          <Route path="/" element={<HomePage />} />
-        </Routes>
-      </div>
-    </Router>
+      </Router>
+    </UserProvider>
   );
 }
 

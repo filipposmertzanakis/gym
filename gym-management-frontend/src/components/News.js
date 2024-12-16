@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useUser } from '../context/UserContext';
 
 const CreateNews = () => {
+  const { user } = useUser();
+
   const [formData, setFormData] = useState({
     title: '',
     content: '',
@@ -12,6 +15,7 @@ const CreateNews = () => {
   const [newsArticles, setNewsArticles] = useState([]); // State to store fetched news articles
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [isFormVisible, setIsFormVisible] = useState(false); // State to control form visibility
 
   // Fetch all news articles on component mount
   useEffect(() => {
@@ -43,6 +47,7 @@ const CreateNews = () => {
     try {
       const dataToSend = {
         ...formData,
+        author: user.username,
       };
 
       const response = await axios.post('http://localhost:5000/api/news', dataToSend);
@@ -57,6 +62,7 @@ const CreateNews = () => {
       // After successful creation, re-fetch the news articles
       const newResponse = await axios.get('http://localhost:5000/api/news');
       setNewsArticles(newResponse.data);
+      setIsFormVisible(false);
     } catch (error) {
       setError(error.response?.data?.error || 'An error occurred while creating the article.');
     }
@@ -67,7 +73,12 @@ const CreateNews = () => {
       <h2>Create News Article</h2>
       {error && <div style={{ color: 'red' }}>{error}</div>}
       {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>}
-      <form onSubmit={handleSubmit}>
+       {/* Button to toggle the form visibility */}
+       <button onClick={() => setIsFormVisible(!isFormVisible)}>
+        {isFormVisible ? 'Cancel' : 'Create News Article'}
+      </button>
+      {isFormVisible && (
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
         <div>
           <label>Title:</label>
           <input
@@ -102,17 +113,12 @@ const CreateNews = () => {
 
         <div>
           <label>Author (User ID):</label>
-          <input
-            type="text"
-            name="author"
-            value={formData.author}
-            onChange={handleChange}
-            required
-          />
+          {user ? <p>{user.username}</p> : <p>No user logged in</p>}
         </div>
 
         <button type="submit">Create News</button>
       </form>
+            )}
 
       <h3>All News Articles</h3>
       {newsArticles.length === 0 ? (

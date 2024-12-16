@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { loginUser } from '../apiService';
+import { useUser } from '../context/UserContext';
 import '../styles/login.css';
 
 const Login = () => {
@@ -7,6 +8,7 @@ const Login = () => {
     username: '',
     password: '',
   });
+  const { setUser } = useUser();
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -16,6 +18,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const user = await loginUser(credentials);
+      setUser(user); // Set user data in context
       console.log('User logged in:', user);
     } catch (error) {
       console.error('Login error:', error);
