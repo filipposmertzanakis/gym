@@ -13,6 +13,20 @@ router.post('/register', async (req, res) => {
     }
 });
 
+// Route to fetch pending users
+router.get('/pending', async (req, res) => {
+    try {
+        const users = await User.find();
+        console.log('Fetched users:', users); // Log fetched users
+        const pendingUsers = users.filter(user => user.status === 'pending');
+        console.log('Pending users:', pendingUsers); // Log pending users
+        res.status(200).json(pendingUsers);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 // Login User
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
@@ -42,8 +56,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const users = await User.find();
-        const pendingUsers = users.filter(user => user.status === 'pending');
-        res.status(200).json(pendingUsers);
+        res.status(200).json(users);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -138,17 +151,7 @@ router.put('/decline', async (req, res) => {
     }
   });
 
-// Route to fetch pending users
-router.get('/api/users/pending', async (req, res) => {
-    try {
-      const users = await User.find();
-      const pendingUsers = users.filter(user => user.status === 'pending');
-      res.status(200).json(pendingUsers);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  });
+
 
 
 module.exports = router;

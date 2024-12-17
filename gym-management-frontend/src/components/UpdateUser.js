@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { updateUser } from '../apiService';
 
 const UpdateUser = () => {
-  const [username, setUsername] = useState('');
-  const [updatedData, setUpdatedData] = useState({ name: '', email: '' });
+  const [username,  setUsername] = useState('');
+  const [updatedData, setUpdatedData] = useState({ username: '', name: '', lastname: '',  email: '' , role : '' , address: { country: '', city: '', street: '' } });
   const [message, setMessage] = useState('');
 
   const handleChange = (e) => {
@@ -38,6 +38,36 @@ const UpdateUser = () => {
         type="email"
         name="email"
         placeholder="New Email"
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="role"
+        placeholder="New Role"
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="lastname"
+        placeholder="New Lastname"
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="address.country"
+        placeholder="New Country"
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="address.city"
+        placeholder="New City"
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="address.street"
+        placeholder="New Street"
         onChange={handleChange}
       />
       <button onClick={handleUpdate}>Update User</button>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUsers, acceptRegistration, declineRegistration } from '../apiService';
+import { getPendingRegistrations, acceptRegistration, declineRegistration } from '../apiService';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -7,7 +7,7 @@ const Users = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const data = await getUsers();
+        const data = await getPendingRegistrations();
         setUsers(data);
       } catch (error) {
         console.error('Error fetching USERS:', error);

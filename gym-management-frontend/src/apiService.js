@@ -13,12 +13,12 @@ export const registerUser = async (userData) => {
 
 export const getPendingRegistrations = async () => {
   try {
-    const response = await axios.get(`${API_URL}/users/pending`);
-    console.log('Response from /api/users/pending:', response);
-    return response.data;
+      const response = await axios.get(`${API_URL}/users/pending`); // This should remain unchanged
+      console.log('Response from /api/users/pending:', response);
+      return response.data;
   } catch (error) {
-    console.error('Error fetching pending registrations:', error);
-    throw error.response.data;
+      console.error('Error fetching pending registrations:', error);
+      throw error.response.data;
   }
 };
 

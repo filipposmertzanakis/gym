@@ -18,8 +18,13 @@ const Login = () => {
     e.preventDefault();
     try {
       const user = await loginUser(credentials);
-      setUser(user); // Set user data in context
-      console.log('User logged in:', user);
+      if (user.status === 'active') {
+        setUser(user); // Set user data in context
+        console.log('User logged in:', user);
+      } else {
+        console.error('User is not active:', user.status);
+        // Optionally, show a message to the user
+      }
     } catch (error) {
       console.error('Login error:', error);
     }
