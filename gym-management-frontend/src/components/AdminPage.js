@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DeleteUser from './DeleteUser';
 import UpdateUser from './UpdateUser';
+import DeleteServiceByName from './DeleteServiceByName';
 import { BrowserRouter as Router, Route, Routes, Link, } from 'react-router-dom';
 const AdminPage = () =>  {
     return (
@@ -11,6 +12,7 @@ const AdminPage = () =>  {
           <button><Link to='UpdateUser'>Update User</Link></button>
           <button><Link to='Register_Requests'>Register_Requests</Link></button>
           <button><Link to='CreateService'>Create_Service</Link></button>
+          <button><Link to='DeleteServiceByName'>deleteServiceByName</Link></button>
         </div>
       </div>
     );

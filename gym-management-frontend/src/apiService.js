@@ -112,4 +112,14 @@ export const createService = async (serviceData) => {
     throw error.response.data;
   }
 };
+export const deleteServiceByName = async (serviceName) => {
+  try {
+    console.log(`Attempting to delete service: ${serviceName}`);
+    const response = await axios.delete(`${API_URL}/services/deleteByName/${serviceName}`);
+    return response.data;
+  } catch (error) {
+    console.error('API Error:', error.response || error.message);
+    throw error.response?.data || { message: 'Error deleting service' };
+  }
+};
 

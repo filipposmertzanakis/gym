@@ -22,5 +22,24 @@ router.post('/', async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
+// delete a service by searching its name
+router.delete('/deleteByName/:serviceName', async (req, res) => {
+    try {
+      const { serviceName } = req.params;
+  
+      // Find and delete the service
+      const deletedService = await Service.findOneAndDelete({ name: serviceName });
+  
+      if (!deletedService) {
+        return res.status(404).json({ message: `Service "${serviceName}" not found.` });
+      }
+  
+      res.status(200).json({ message: `Service "${serviceName}" deleted successfully.` });
+    } catch (error) {
+      console.error('Error deleting service:', error);
+      res.status(500).json({ message: 'Internal server error.' });
+    }
+  });
+  
 
 module.exports = router;

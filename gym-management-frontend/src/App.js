@@ -11,6 +11,7 @@ import './styles/App.css';
 import './styles/navbar.css';
 import Register_Requests from './components/Register_Requests';
 import CreateService from './components/CreateService';
+import DeleteServiceByName from './components/DeleteServiceByName';
 import { useUser } from './context/UserContext'
 
 //EDV EINAI TO HOME PAGE DHLADH H SELIDA POY UA EMFANIZETAI KATHE FORA POY ANOIGEI TO SITE
@@ -65,6 +66,7 @@ function App() {
           <Route path="/AdminPage/CreateService"  element={<CreateService/>} />
           <Route path="/AdminPage/updateUser" element={<UpdateUser/>} />
           <Route path="/AdminPage/Register_Requests" element={<Register_Requests/>} />
+          <Route path="/AdminPage/DeleteServiceByName" element={<DeleteServiceByName/>} />
           <Route path="/" element={<HomePage />} />
         </Routes>
       </div>
