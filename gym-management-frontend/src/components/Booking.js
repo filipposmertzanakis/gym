@@ -21,14 +21,16 @@ const Booking = () => {
     }
   }, [service]);
 
-  const handleBooking = async (e) => {
+  const handleBooking = async (e, session) => {
     e.preventDefault();
     const bookingData = {
       userId: user._id,
       serviceId: service._id,
-      date,
-      time,
+      date: session.day,
+      time: session.time,
     };
+
+    console.log('Booking Data:', bookingData); // Log the booking data
 
     try {
       await createBooking(bookingData);
@@ -52,26 +54,12 @@ const Booking = () => {
             {service.schedule.map((session, index) => (
               <li key={index}>
                 {session.day} at {session.time} with {session.trainer} (Max Capacity: {session.maxCapacity})
+                <form onSubmit={(e) => handleBooking(e, session)}>
+                  <button type="submit">Confirm Booking</button>
+                </form>
               </li>
             ))}
           </ul>
-          <form onSubmit={handleBooking}>
-            <input
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              required
-              readOnly
-            />
-            <input
-              type="time"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
-              required
-              readOnly
-            />
-            <button type="submit">Confirm Booking</button>
-          </form>
           {message && <p>{message}</p>}
         </div>
       ) : (

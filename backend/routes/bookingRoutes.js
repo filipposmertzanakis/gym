@@ -6,13 +6,16 @@ const router = express.Router();
 // Create Booking
 router.post('/', async (req, res) => {
     try {
-        // Check if the user has already booked this service
+        // Check if the user has already booked this service for the specific schedule entry
         const existingBooking = await Booking.findOne({
             userId: req.body.userId,
             serviceId: req.body.serviceId,
             date: req.body.date,
             time: req.body.time,
+            status: 'confirmed' // Optional: Check only confirmed bookings
         });
+
+        console.log('Existing Booking:', existingBooking); // Log the existing booking check
 
         if (existingBooking) {
             return res.status(400).json({ error: 'You have already booked this service for the selected date and time.' });
