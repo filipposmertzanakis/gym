@@ -60,7 +60,7 @@ const CreateService = () => {
         {schedule.map((session, index) => (
           <div key={index}>
             <input
-              type="text"
+              type="date"
               name="day"
               placeholder="Day"
               value={session.day}
@@ -68,7 +68,7 @@ const CreateService = () => {
               required
             />
             <input
-              type="text"
+              type="time"
               name="time"
               placeholder="Time"
               value={session.time}

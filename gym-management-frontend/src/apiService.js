@@ -98,6 +98,7 @@ export const deleteUser = async (username) => {
 export const updateUser = async (username, updatedData) => {
   try {
     const response = await axios.put(`${API_URL}/users`, { username, ...updatedData });
+    console.log("Updating user:", username);
     return response.data;
   } catch (error) {
     throw error.response.data;

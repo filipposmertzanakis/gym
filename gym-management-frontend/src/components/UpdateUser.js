@@ -1,77 +1,84 @@
-import React, { useState } from 'react';
-import { updateUser } from '../apiService';
+import React, { useState, useEffect } from 'react';
+import { updateUser, getUsers } from '../apiService';
 
 const UpdateUser = () => {
-  const [username,  setUsername] = useState('');
-  const [updatedData, setUpdatedData] = useState({ username: '', name: '', lastname: '',  email: '' , role : '' , address: { country: '', city: '', street: '' } });
+  const [users, setUsers] = useState([]);
   const [message, setMessage] = useState('');
 
-  const handleChange = (e) => {
-    setUpdatedData({ ...updatedData, [e.target.name]: e.target.value });
+  // Fetch users on component mount
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const data = await getUsers();
+        setUsers(data);
+      } catch (error) {
+        setMessage(`Error fetching users: ${error.message || 'Unknown error'}`);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
+  // Handle input changes for individual users
+  const handleChange = (e, username) => {
+    const { name, value } = e.target;
+
+    // Update the specific user's data in the local state
+    setUsers((prevUsers) =>
+      prevUsers.map((user) =>
+        user.username === username
+          ? { ...user, [name]: value }
+          : user
+      )
+    );
   };
 
-  const handleUpdate = async () => {
+  // Update a specific user
+  const handleUpdate = async (username) => {
+    const userToUpdate = users.find((user) => user.username === username);
     try {
-      await updateUser(username, updatedData);
-      setMessage('User updated successfully');
+      await updateUser(username, userToUpdate);
+      setMessage(`User ${username} updated successfully`);
     } catch (error) {
-      setMessage(`Error updating user: ${error.message || 'Unknown error'}`);
+      setMessage(`Error updating user ${username}: ${error.message || 'Unknown error'}`);
     }
   };
 
   return (
     <div>
-      <h2>Update User</h2>
-      <input
-        type="text"
-        placeholder="Enter Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="text"
-        name="name"
-        placeholder="New Name"
-        onChange={handleChange}
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="New Email"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="role"
-        placeholder="New Role"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="lastname"
-        placeholder="New Lastname"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="address.country"
-        placeholder="New Country"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="address.city"
-        placeholder="New City"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="address.street"
-        placeholder="New Street"
-        onChange={handleChange}
-      />
-      <button onClick={handleUpdate}>Update User</button>
+      <h2>Update Users</h2>
       {message && <p>{message}</p>}
+      <ul>
+        {users.map((user) => (
+          <li key={user.username}>
+            <strong>{user.name} ({user.username})</strong>
+            <div>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={user.name || ''}
+                onChange={(e) => handleChange(e, user.username)}
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={user.email || ''}
+                onChange={(e) => handleChange(e, user.username)}
+              />
+              <input
+                type="text"
+                name="role"
+                placeholder="Role"
+                value={user.role || ''}
+                onChange={(e) => handleChange(e, user.username)}
+              />
+              <button onClick={() => handleUpdate(user.username)}>Update</button>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
