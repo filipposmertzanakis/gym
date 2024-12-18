@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getServices } from '../apiService';
+import { getServices  } from '../apiService';
+import { BrowserRouter as Router, Route, Routes, Link, } from 'react-router-dom';
+
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -22,9 +24,12 @@ const Services = () => {
       <h1>Services</h1>
       <ul>
         {services.map((service) => (
-          <li key={service._id}>{service.name}</li>
+          <li key={service._id}>{service.name}
+          <button><Link to='Booking'>Booking</Link></button>
+          </li>
         ))}
       </ul>
+      
     </div>
   );
 };

@@ -12,6 +12,7 @@ import './styles/navbar.css';
 import Register_Requests from './components/Register_Requests';
 import CreateService from './components/CreateService';
 import DeleteServiceByName from './components/DeleteServiceByName';
+import Booking from './components/Booking';
 import { useUser } from './context/UserContext'
 
 //EDV EINAI TO HOME PAGE DHLADH H SELIDA POY UA EMFANIZETAI KATHE FORA POY ANOIGEI TO SITE
@@ -62,6 +63,7 @@ function App() {
           <Route path="/AdminPage" element={<AdminPage />} />
           <Route path="/services" element={<Services />} />
           <Route path="/News" element={<News/>} />
+          <Route path="/services/Booking" element={<Booking/>} />
           <Route path="/AdminPage/DeleteUser"  element={<DeleteUser/>} />
           <Route path="/AdminPage/CreateService"  element={<CreateService/>} />
           <Route path="/AdminPage/updateUser" element={<UpdateUser/>} />

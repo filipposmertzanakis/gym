@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import DeleteUser from './DeleteUser';
-import UpdateUser from './UpdateUser';
-import DeleteServiceByName from './DeleteServiceByName';
+
 import { BrowserRouter as Router, Route, Routes, Link, } from 'react-router-dom';
 const AdminPage = () =>  {
     return (
