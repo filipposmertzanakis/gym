@@ -1,51 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { updateUser, getUsers } from '../apiService';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Booking = () => {
-  const [users, setUsers] = useState([]);
-  const [message, setMessage] = useState('');
-
-  // Fetch users on component mount
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const data = await getUsers();
-        setUsers(data);
-      } catch (error) {
-        setMessage(`Error fetching users: ${error.message || 'Unknown error'}`);
-      }
-    };
-
-    fetchUsers();
-  }, []);
-
-  // Handle input changes for individual users
-  const handleChange = (e, username) => {
-    const { name, value } = e.target;
-
-    // Update the specific user's data in the local state
-    setUsers((prevUsers) =>
-      prevUsers.map((user) =>
-        user.username === username
-          ? { ...user, [name]: value }
-          : user
-      )
-    );
-  };
-
-  // Update a specific user
-  const handleUpdate = async (username) => {
-    const userToUpdate = users.find((user) => user.username === username);
-    try {
-      await updateUser(username, userToUpdate);
-      setMessage(`User ${username} updated successfully`);
-    } catch (error) {
-      setMessage(`Error updating user ${username}: ${error.message || 'Unknown error'}`);
-    }
-  };
+  const location = useLocation();
+  const { service } = location.state || {}; // Get the service details from the state
 
   return (
-    <p>TSAPOU</p>
+    <div>
+      {service ? (
+        <div>
+          <h2>Booking for: {service.name}</h2>
+          <p>Description: {service.description}</p>
+          <p>Price: ${service.price}</p>
+          <h3>Schedule:</h3>
+          <ul>
+            {service.schedule.map((session, index) => (
+              <li key={index}>
+                {session.day} at {session.time} with {session.trainer} (Max Capacity: {session.maxCapacity})
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <p>No service selected.</p>
+      )}
+    </div>
   );
 };
 

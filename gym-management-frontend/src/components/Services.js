@@ -24,8 +24,11 @@ const Services = () => {
       <h1>Services</h1>
       <ul>
         {services.map((service) => (
-          <li key={service._id}>{service.name}
-          <button><Link to='Booking'>Booking</Link></button>
+          <li key={service._id}>
+            {service.name}
+            <button>
+              <Link to="/services/Booking" state={{ service }}>Booking</Link>
+            </button>
           </li>
         ))}
       </ul>
