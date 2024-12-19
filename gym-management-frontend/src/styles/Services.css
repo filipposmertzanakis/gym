@@ -1,0 +1,77 @@
+
+  
+  /* Add padding to avoid overlap with navbar */
+  .services-container {
+    padding: 80px 20px; /* Ensure the content starts below the navbar */
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  /* Style for the header */
+  .services-container h1 {
+    font-size: 2rem;
+    color: #2C3E50;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the services list */
+  .services-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px; /* Center the list */
+  }
+  
+  /* Individual service item */
+  .service-item {
+    display: flex;
+    justify-content: space-between; /* Space between text and button */
+    align-items: center;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for better aesthetics */
+  }
+  
+  /* Booking button styling */
+  .service-item button {
+    background-color: #27AE60;
+    color: white;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .service-item button a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .service-item button:hover {
+    background-color: #1e874b;
+  }
+  
+  .service-item button:focus {
+    outline: none;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    .service-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .service-item button {
+      margin-top: 10px;
+      width: 100%;
+    }
+  }
+  
+  
+  

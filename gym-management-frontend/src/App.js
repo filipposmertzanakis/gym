@@ -9,6 +9,7 @@ import UpdateUser from './components/UpdateUser';
 import News from './components/News';
 import './styles/App.css';
 import './styles/navbar.css';
+import './styles/Services.css';
 import Register_Requests from './components/Register_Requests';
 import CreateService from './components/CreateService';
 import DeleteServiceByName from './components/DeleteServiceByName';
