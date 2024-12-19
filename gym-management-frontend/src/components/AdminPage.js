@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import '../styles/AdminPage.css';
 import { BrowserRouter as Router, Route, Routes, Link, } from 'react-router-dom';
 const AdminPage = () =>  {
     return (
