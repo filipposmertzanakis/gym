@@ -41,5 +41,21 @@ router.delete('/deleteByName/:serviceName', async (req, res) => {
     }
   });
   
+// Update a service by name
+router.put('/updateByName/:serviceName', async (req, res) => {
+  try {
+      const { serviceName } = req.params;
+      const updatedService = await Service.findOneAndUpdate({ name: serviceName }, req.body, { new: true });
+
+      if (!updatedService) {
+          return res.status(404).json({ message: `Service "${serviceName}" not found.` });
+      }
+
+      res.status(200).json(updatedService);
+  } catch (error) {
+      console.error('Error updating service:', error);
+      res.status(500).json({ message: 'Internal server error.' });
+  }
+});
 
 module.exports = router;

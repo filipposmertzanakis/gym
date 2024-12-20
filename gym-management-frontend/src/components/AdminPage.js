@@ -11,6 +11,7 @@ const AdminPage = () =>  {
           <button><Link to='Register_Requests'>Register_Requests</Link></button>
           <button><Link to='CreateService'>Create_Service</Link></button>
           <button><Link to='DeleteServiceByName'>deleteServiceByName</Link></button>
+          <button><Link to='ManageServices'>ManageServices</Link></button>
         </div>
       </div>
     );

@@ -124,3 +124,12 @@ export const deleteServiceByName = async (serviceName) => {
   }
 };
 
+export const updateService = async (serviceName, updatedData) => {
+  try {
+    const response = await axios.put(`${API_URL}/services/updateByName/${serviceName}`, updatedData);
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
