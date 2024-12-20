@@ -36,3 +36,21 @@
 .admin-menu button:hover {
   background-color: #191a1e; /* Darker shade on hover */
 }
+
+.link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 30px;
+  font-size: 20px;
+  background-color: #2C3E50; 
+  color: #27AE60;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.link:hover{
+  background-color: #191a1e;
+}

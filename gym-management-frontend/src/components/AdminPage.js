@@ -6,15 +6,15 @@ const AdminPage = () =>  {
       <div className="admin-page">
         <h2>Admin Dashboard</h2>
         <div className="admin-menu">
-          <button><Link to='DeleteUser'>Delete User</Link></button>
-          <button><Link to='UpdateUser'>Update User</Link></button>
-          <button><Link to='Register_Requests'>Register_Requests</Link></button>
-          <button><Link to='CreateService'>Create_Service</Link></button>
-          <button><Link to='DeleteServiceByName'>deleteServiceByName</Link></button>
-          <button><Link to='ManageServices'>ManageServices</Link></button>
+          <Link to='DeleteUser' className='link'>Delete User</Link>
+          <Link to='UpdateUser' className='link'>Update User</Link>
+          <Link to='Register_Requests' className='link'>Register_Requests</Link>
+          <Link to='CreateService' className='link'>Create_Service</Link>
+          <Link to='DeleteServiceByName' className='link'>deleteServiceByName</Link>
+          <Link to='ManageServices' className='link'>ManageServices</Link>
         </div>
       </div>
     );
   }
   
-  export default AdminPage;
+  export default AdminPage
