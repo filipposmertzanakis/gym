@@ -4,6 +4,7 @@ import { updateUser, getUsers } from '../apiService';
 const UpdateUser = () => {
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState('');
+  const [editingUser, setEditingUser] = useState(null);
 
   // Fetch users on component mount
   useEffect(() => {
@@ -39,6 +40,7 @@ const UpdateUser = () => {
     try {
       await updateUser(username, userToUpdate);
       setMessage(`User ${username} updated successfully`);
+      setEditingUser(null);
     } catch (error) {
       setMessage(`Error updating user ${username}: ${error.message || 'Unknown error'}`);
     }
@@ -53,28 +55,63 @@ const UpdateUser = () => {
           <li key={user.username}>
             <strong>{user.name} ({user.username})</strong>
             <div>
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                value={user.name || ''}
-                onChange={(e) => handleChange(e, user.username)}
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={user.email || ''}
-                onChange={(e) => handleChange(e, user.username)}
-              />
-              <input
-                type="text"
-                name="role"
-                placeholder="Role"
-                value={user.role || ''}
-                onChange={(e) => handleChange(e, user.username)}
-              />
-              <button onClick={() => handleUpdate(user.username)}>Update</button>
+              <button onClick={() => setEditingUser(editingUser === user.username ? null : user.username)}>
+                {editingUser === user.username ? 'Close' : 'Update'}
+              </button>
+              {editingUser === user.username && (
+                <div>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    value={user.name || ''}
+                    onChange={(e) => handleChange(e, user.username)}
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={user.email || ''}
+                    onChange={(e) => handleChange(e, user.username)}
+                  />
+                  <input
+                    type="text"
+                    name="role"
+                    placeholder="Role"
+                    value={user.role || ''}
+                    onChange={(e) => handleChange(e, user.username)}
+                  />
+                  <input
+                    type="text"
+                    name="status"
+                    placeholder="Status"
+                    value={user.status || ''}
+                    onChange={(e) => handleChange(e, user.username)}
+                  />
+                  <input
+                    type="text"
+                    name="country"
+                    placeholder="Country"
+                    value={user.address.country || ''}
+                    onChange={(e) => handleChange(e, user.username)}
+                  />
+                  <input
+                    type="text"
+                    name="city"
+                    placeholder="City"
+                    value={user.address.city || ''}
+                    onChange={(e) => handleChange(e, user.username)}
+                  />
+                  <input
+                    type="text"
+                    name="street"
+                    placeholder="Street"
+                    value={user.address.street || ''}
+                    onChange={(e) => handleChange(e, user.username)}
+                  />
+                  <button onClick={() => handleUpdate(user.username)}>Save</button>
+                </div>
+              )}
             </div>
           </li>
         ))}
