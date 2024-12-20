@@ -25,14 +25,22 @@
   /* Individual service item */
   .service-item {
     display: flex;
-    justify-content: space-between; /* Space between text and button */
-    align-items: center;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
     background-color: #f9f9f9;
+    text-align: center; /* Center text */
     margin-bottom: 10px;
     padding: 10px 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for better aesthetics */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+  }
+  
+  .service-item:hover {
+    background-color: #e0f7fa; /* Change to a light blue color on hover */
+    transform: scale(1.02); /* Slightly scale up the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
   }
   
   /* Booking button styling */
