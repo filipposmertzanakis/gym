@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { updateUser, getUsers } from '../apiService';
+import { updateUser, getUsers, deleteUser } from '../apiService';
 
 const UpdateUser = () => {
   const [users, setUsers] = useState([]);
@@ -46,6 +46,17 @@ const UpdateUser = () => {
     }
   };
 
+  // Delete a specific user
+  const handleDelete = async (username) => {
+    try {
+      await deleteUser(username);
+      setUsers(users.filter(user => user.username !== username));
+      setMessage(`User ${username} deleted successfully`);
+    } catch (error) {
+      setMessage(`Error deleting user ${username}: ${error.message || 'Unknown error'}`);
+    }
+  };
+
   return (
     <div>
       <h2>Update Users</h2>
@@ -58,6 +69,7 @@ const UpdateUser = () => {
               <button onClick={() => setEditingUser(editingUser === user.username ? null : user.username)}>
                 {editingUser === user.username ? 'Close' : 'Update'}
               </button>
+              <button onClick={() => handleDelete(user.username)}>Delete</button>
               {editingUser === user.username && (
                 <div>
                   <input
