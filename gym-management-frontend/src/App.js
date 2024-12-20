@@ -14,6 +14,7 @@ import Register_Requests from './components/Register_Requests';
 import CreateService from './components/CreateService';
 import DeleteServiceByName from './components/DeleteServiceByName';
 import Booking from './components/Booking';
+import Profile from './components/Profile';
 import { useUser } from './context/UserContext'
 
 //EDV EINAI TO HOME PAGE DHLADH H SELIDA POY UA EMFANIZETAI KATHE FORA POY ANOIGEI TO SITE
@@ -54,6 +55,9 @@ function App() {
             {user && user.role === 'admin' && ( // Check if user is admin
               <Link to="/AdminPage">Admin page</Link>
             )}
+            {user && user.status === 'active' && ( // Check if user is active}
+              <Link to="/Profile">Profile</Link>
+            )}
             <Link to="News">News</Link>
           </nav>
         </div>
@@ -70,6 +74,7 @@ function App() {
           <Route path="/AdminPage/updateUser" element={<UpdateUser/>} />
           <Route path="/AdminPage/Register_Requests" element={<Register_Requests/>} />
           <Route path="/AdminPage/DeleteServiceByName" element={<DeleteServiceByName/>} />
+          <Route path="/Profile" element={<Profile/>} />
           <Route path="/" element={<HomePage />} />
         </Routes>
       </div>
