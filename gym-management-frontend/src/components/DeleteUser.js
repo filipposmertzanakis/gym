@@ -66,16 +66,16 @@ const DeleteUser = () => {
       <table>
         <thead>
           <tr>
-            <th>Name</th>
             <th>Username</th>
+            <th>Role</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {users.map(user => (
             <tr key={user.username}>
-              <td>{user.name}</td>
               <td>{user.username}</td>
+              <td>{user.role}</td>
               <td>
                 {/* Open the info modal */}
                 <button onClick={() => handleOpenInfoModal(user)}>View Info</button>
