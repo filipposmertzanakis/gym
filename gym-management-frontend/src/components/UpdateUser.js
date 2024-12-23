@@ -76,7 +76,7 @@ const UpdateUser = () => {
                     type="text"
                     name="name"
                     placeholder="Name"
-                    value={user.name || ''}
+                    value = {user.name}
                     onChange={(e) => handleChange(e, user.username)}
                   />
                   <input

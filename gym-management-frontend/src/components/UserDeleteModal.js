@@ -8,7 +8,7 @@ const UserModal = ({ user, onClose, handleDelete }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2>Delete User</h2>
+        <h2 className='title-modal'>Delete User</h2>
         <p><strong>Do you want to delete the user:</strong> {user.username}?</p>
         <button onClick={() => handleDelete(user.username)}>Delete</button>
         <button onClick={onClose}>Close</button>

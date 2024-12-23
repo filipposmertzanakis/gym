@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { deleteUser, getUsers } from '../apiService';
 import UserModal from './UserDeleteModal';
 import UserInfoModal from './UserInfoModal';
+
+import UserUpdateModal from './UserUpdateModal';
 import '../styles/UsersTable.css';
 
 
@@ -12,6 +14,7 @@ const DeleteUser = () => {
   const [selectedUser, setSelectedUser] = useState(null); // State to manage the selected user for both modals
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // State to control delete modal
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false); // State to control info modal
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false); // State to control info modal
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -58,6 +61,16 @@ const DeleteUser = () => {
     setSelectedUser(null); // Clear the selected user
     setIsInfoModalOpen(false); // Close the info modal
   };
+  // Open/Close Update Modal
+  const handleOpenUpdateModal = (user) => {
+    setSelectedUser(user); // Set the selected user
+    setIsUpdateModalOpen(true); // Open the info modal
+  };
+
+  const handleCloseUpdateModal = () => {
+    setSelectedUser(null); // Clear the selected user
+    setIsUpdateModalOpen(false); // Close the info modal
+  };
 
   return (
     <div>
@@ -81,6 +94,8 @@ const DeleteUser = () => {
                 <button onClick={() => handleOpenInfoModal(user)}>View Info</button>
                 {/* Open the delete modal */}
                 <button onClick={() => handleOpenDeleteModal(user)}>Delete</button>
+                {/* Open the update modal */}
+                <button onClick={() => handleOpenUpdateModal(user)}>Update</button>
               </td>
             </tr>
           ))}
@@ -101,6 +116,13 @@ const DeleteUser = () => {
         <UserInfoModal
           user={selectedUser}
           onClose={handleCloseInfoModal}
+        />
+      )}
+      {/* Render Update Modal */}
+      {isUpdateModalOpen && (
+        <UserUpdateModal
+          user={selectedUser}
+          onClose={handleCloseUpdateModal}
         />
       )}
     </div>

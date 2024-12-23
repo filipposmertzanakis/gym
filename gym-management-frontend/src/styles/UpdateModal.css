@@ -1,0 +1,105 @@
+.Umodal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.Umodal-content {
+  background: #1C2833;
+  color: #ECF0F1;
+  padding: 40px;
+  border-radius: 15px;
+  width: 450px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  font-family: 'Arial', sans-serif;
+  position: relative;
+}
+
+.title-Umodal {
+  color: #2ECC71;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.Umodal-content form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.Umodal-content label {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+  color: #BDC3C7;
+}
+
+.Umodal-content input {
+  width: 100%;
+  padding: 12px 10px;
+  border: 2px solid #2ECC71;
+  border-radius: 10px;
+  background: #273746;
+  color: white;
+  font-size: 1rem;
+}
+
+.Umodal-content input:focus {
+  outline: none;
+  border-color: #27AE60;
+  background: #1F2E3C;
+}
+
+.Umodal-content input::placeholder {
+  color: #7F8C8D;
+  font-size: 0.9rem;
+}
+
+.Umodal-content .single-row {
+  grid-column: span 2;
+}
+
+.Umodal-content button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button.close-button {
+  background: #E74C3C;
+  color: white;
+}
+
+button.close-button:hover {
+  background: #C0392B;
+}
+
+@media screen and (max-width: 600px) {
+  .Umodal-content {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .Umodal-content form {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .Umodal-content .single-row {
+    grid-column: 1;
+  }
+}
