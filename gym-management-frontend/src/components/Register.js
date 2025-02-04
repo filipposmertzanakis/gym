@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { registerUser } from '../apiService';
+
 import '../styles/Register.css'; 
 
 const Register = () => {

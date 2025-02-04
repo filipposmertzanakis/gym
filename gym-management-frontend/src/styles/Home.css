@@ -1,0 +1,121 @@
+/* Home Page styles for the Gym Management System */
+
+/* Define CSS variables for consistent styling */
+:root {
+  --primary-bg: #fff;
+  --accent: #ff5722;
+  --text-color: #333;
+  --hover-bg: #f0f0f0;
+  --transition: all 0.3s ease;
+}
+
+/* Optional container to wrap home page content */
+.home-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), var(--primary-bg);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.home-container:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Style for the welcome heading */
+.home-container h2 {
+  color: var(--accent);
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Style for the introductory paragraph */
+.home-container p {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Home content blocrgb(204, 29, 2)ditional features info */
+.home-content {
+  position: relative;
+  border-radius: 8px;
+  padding: 40px;
+  margin-top: 20px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Decorative pseudo-elements with animation */
+.home-content::before,
+.home-content::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  height: 80%;
+  width: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.8;
+  transition: transform 0.5s ease;
+}
+
+.home-content::before {
+  left: 500px;
+  background-image: url("../../photos/body-builder.png");
+}
+
+.home-content::after {
+  right: 500px;
+  background-image: url("../../photos/body-builder.png");
+}
+
+.home-content:hover::before,
+.home-content:hover::after {
+  transform: scale(1.1);
+}
+
+/* Heading within the home-content */
+.home-content h3 {
+  color: var(--accent);
+  font-size: 2rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Remove default list styling for the features list */
+.home-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+/* List item styles for each feature */
+.home-content li {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.home-content li::before {
+  content: '✓';
+  position:relative;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-weight: bold;
+}

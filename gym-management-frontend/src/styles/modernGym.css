@@ -45,7 +45,7 @@ body {
 
 /* Buttons */
 button {
-  background-color: silver; /* flat background */
+  background-color: #ff5722; /* flat background */
   border: none;                  /* no borders for a clean look */
   padding: 10px 20px;            /* comfortable clickable area */
   font-size: 1rem;

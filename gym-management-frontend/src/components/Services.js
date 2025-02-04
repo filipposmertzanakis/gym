@@ -5,6 +5,7 @@ import { useUser } from '../context/UserContext';
 import ServiceModal from './ServiceModal';
 import '../styles/Services.css';
 
+
 const Services = () => {
   const [services, setServices] = useState([]);
   const [selectedService, setSelectedService] = useState(null);

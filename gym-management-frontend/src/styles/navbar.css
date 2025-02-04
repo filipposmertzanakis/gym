@@ -1,10 +1,9 @@
-
 .navbar {
   color: #27AE60;
   font-family: "Rubik", sans-serif;
   font-size: 20px;
   font-weight: bold;
-  background-color: #2C3E50; 
+  background-color: silver;
   padding: 10px 30px;
   display: flex;
   justify-content: space-between; 
@@ -12,36 +11,5 @@
   border-bottom: 3px solid  #27AE60 ;
 }
 
-/* Style for links within the navbar */
-.navbar a {
-  color: #27AE60; 
-  text-decoration: none; 
-  margin: 0 15px; 
-  padding: 10px; 
-  border-radius: 5px; 
-  transition: background-color 0.3s ease; 
-}
 
-/* Hover effect for links */
-.navbar a:hover {
-  color: #454e49;
-  
-}
-
-/* Additional style for the 'poutsa' class link */
-.poutsa {
-  font-weight: bold; 
-  font-style: italic;
-  color: orange; 
-  background-color: #222; 
-  padding: 10px 15px;
-  border: 2px solid orange; 
-  border-radius: 10px; 
-}
-
-/* Hover effect for the 'poutsa' class link */
-.poutsa:hover {
-  background-color: orange; 
-  color: #222; 
-}
 

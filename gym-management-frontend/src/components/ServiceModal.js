@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/ServiceModal.css'; // Optional: Add styles for the modal
 
+
 const ServiceModal = ({ service, onClose }) => {
   if (!service) return null; // If no service is provided, return null
 
