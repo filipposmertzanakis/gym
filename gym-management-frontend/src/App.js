@@ -17,6 +17,7 @@ import Booking from './components/Booking';
 import Profile from './components/Profile';
 import { useUser } from './context/UserContext'
 import ManageServices from './components/ManageServices';
+import './styles/modernGym.css';
 
 //EDV EINAI TO HOME PAGE DHLADH H SELIDA POY UA EMFANIZETAI KATHE FORA POY ANOIGEI TO SITE
 function HomePage() {

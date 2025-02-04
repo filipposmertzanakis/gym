@@ -7,7 +7,7 @@
   background-color: #2C3E50; 
   padding: 10px 30px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
   align-items: center;
   border-bottom: 3px solid  #27AE60 ;
 }
@@ -24,8 +24,7 @@
 
 /* Hover effect for links */
 .navbar a:hover {
-  text-decoration: underline;
-  color: #27AE60;
+  color: #454e49;
   
 }
 

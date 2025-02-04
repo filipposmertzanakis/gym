@@ -37,7 +37,9 @@ const Services = () => {
       <ul className="services-list">
         {services.map((service) => (
           <li key={service._id} className="service-item" onClick={() => handleServiceClick(service)}>
-            {service.name}
+            <h2>{service.name}</h2>
+            <h2>{service.price}$</h2>
+            <p>{service.description}</p>
             {user && user.status === 'active' && (
               <button>
                 <Link to="/services/Booking" state={{ service }}>Booking</Link>

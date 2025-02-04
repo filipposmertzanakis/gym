@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useUser } from '../context/UserContext';
+import '../styles/News.css'; // Import the CSS file
 
 const CreateNews = () => {
   const { user } = useUser();
@@ -69,20 +70,24 @@ const CreateNews = () => {
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+    <div className="news-container">
       <h2>Create News Article</h2>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-      {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>}
+      {error && <div className="news-error">{error}</div>}
+      {successMessage && <div className="news-success">{successMessage}</div>}
        {/* Button to toggle the form visibility */}
-       <button onClick={() => setIsFormVisible(!isFormVisible)}>
+       <button
+        className="toggle-form-btn"
+        onClick={() => setIsFormVisible(!isFormVisible)}
+      >
         {isFormVisible ? 'Cancel' : 'Create News Article'}
       </button>
       {isFormVisible && (
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
-        <div>
-          <label>Title:</label>
+      <form onSubmit={handleSubmit} className="news-form">
+        <div className="form-group">
+          <label htmlFor="news-title">Title:</label>
           <input
             type="text"
+            id="news-title"
             name="title"
             value={formData.title}
             onChange={handleChange}
@@ -90,9 +95,10 @@ const CreateNews = () => {
           />
         </div>
 
-        <div>
-          <label>Content:</label>
+        <div className="form-group">
+          <label htmlFor="news-content">Content:</label>
           <textarea
+            id="news-content"
             name="content"
             value={formData.content}
             onChange={handleChange}
@@ -100,10 +106,11 @@ const CreateNews = () => {
           />
         </div>
 
-        <div>
-          <label>Category:</label>
+        <div className="form-group">
+          <label htmlFor="news-category">Category:</label>
           <input
             type="text"
+            id="news-category"
             name="category"
             value={formData.category}
             onChange={handleChange}
@@ -111,30 +118,32 @@ const CreateNews = () => {
           />
         </div>
 
-        <div>
+        <div className="form-group">
           <label>Author (User ID):</label>
           {user ? <p>{user.username}</p> : <p>No user logged in</p>}
         </div>
 
-        <button type="submit">Create News</button>
+        <button type="submit" className="submit-btn">Create News</button>
       </form>
             )}
 
-      <h3>All News Articles</h3>
-      {newsArticles.length === 0 ? (
-        <p>No news articles found.</p>
-      ) : (
-        <ul>
-          {newsArticles.map((article) => (
-            <li key={article._id}>
-              <h4>{article.title}</h4>
-              <p>{article.content}</p>
-              <p><strong>Category:</strong> {article.category}</p>
-              <p><strong>Author:</strong> {article.author}</p>
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="news-articles">
+        <h3>All News Articles</h3>
+        {newsArticles.length === 0 ? (
+          <p>No news articles found.</p>
+        ) : (
+          <ul>
+            {newsArticles.map((article) => (
+              <li key={article._id}>
+                <h4>{article.title}</h4>
+                <p>{article.content}</p>
+                <p><strong>Category:</strong> {article.category}</p>
+                <p><strong>Author:</strong> {article.author}</p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };

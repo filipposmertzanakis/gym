@@ -1,0 +1,75 @@
+/* Container for the Profile Component */
+.profile-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--primary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+.profile-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--accent);
+  font-size: 2rem;
+}
+
+/* Basic text styling for user details */
+.profile-container p {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: var(--text-color);
+}
+
+/* Section wrapper for profile information */
+.profile-details {
+  margin-bottom: 30px;
+}
+
+/* Bookings section header */
+.booking-section h3 {
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+/* Styling for the list of bookings */
+.booking-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Individual booking item styling */
+.booking-list li {
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for booking items */
+.booking-list li:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Styling for error messages */
+.error {
+  color: red;
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* Message shown when the user is not logged in */
+.login-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--accent);
+}

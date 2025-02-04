@@ -1,0 +1,129 @@
+.news-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--primary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.news-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--accent);
+  font-size: 2rem;
+}
+
+.news-error {
+  color: red;
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.news-success {
+  color: green;
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.toggle-form-btn {
+  background-color: var(--accent);
+  color: var(--primary-bg);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 auto 20px auto;
+  display: block;
+}
+.toggle-form-btn:hover {
+  background-color: #777;
+}
+
+.news-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: var(--secondary-bg);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  display: block;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+}
+
+.submit-btn {
+  background-color: var(--accent);
+  color: var(--primary-bg);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.submit-btn:hover {
+  background-color: #777;
+}
+
+.news-articles {
+  margin-top: 30px;
+}
+
+.news-articles h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--accent);
+  font-size: 1.5rem;
+}
+
+.news-articles ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-articles li {
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.news-articles li:hover {
+  background-color: var(--hover-bg);
+}
+
+.news-articles li h4 {
+  margin-bottom: 10px;
+  color: var(--accent);
+}
+
+.news-articles li p {
+  margin: 5px 0;
+  color: var(--text-color);
+}
