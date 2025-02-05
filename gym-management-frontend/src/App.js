@@ -22,11 +22,19 @@ import './styles/Home.css';
 
 //EDV EINAI TO HOME PAGE DHLADH H SELIDA POY UA EMFANIZETAI KATHE FORA POY ANOIGEI TO SITE
 function HomePage() {
-  const { user } = useUser(); // Access the user context
-  console.log('HomePage rendered, current user:', user);
+  const { user } = useUser(); // Get the user data from context
+
   return (
-    <div>
-      <h2>Welcome to the Gym Management System</h2>
+    <div >
+      <h2>
+        {user ? (
+          <>
+            Welcome, <span style={{ color: 'var(--accent)' }}>{user.username}</span>, to the Gym Management System
+          </>
+        ) : (
+          'Welcome to the Gym Management System'
+        )}
+      </h2>
       <p>This is your one-stop solution for gym management.</p>
       <div className="home-content">
         <h3>Features:</h3>

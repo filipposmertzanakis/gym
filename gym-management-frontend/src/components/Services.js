@@ -43,7 +43,7 @@ const Services = () => {
             <p>{service.description}</p>
             {user && user.status === 'active' && (
               <button>
-                <Link to="/services/Booking" state={{ service }}>Booking</Link>
+                <Link to="/services/Booking" state={{ service }}>Book</Link>
               </button>
             )}
           </li>

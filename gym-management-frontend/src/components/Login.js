@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { loginUser } from '../apiService';
 import { useUser } from '../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 import '../styles/login.css';
 
 const Login = () => {
@@ -9,6 +10,7 @@ const Login = () => {
     password: '',
   });
   const { setUser } = useUser();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -21,9 +23,10 @@ const Login = () => {
       if (user.status === 'active') {
         setUser(user); // Set user data in context
         console.log('User logged in:', user);
+        navigate('/'); // Redirect to the home page after logging in
       } else {
         console.error('User is not active:', user.status);
-        // Optionally, show a message to the user
+        // Optionally, display a message to the user.
       }
     } catch (error) {
       console.error('Login error:', error);
