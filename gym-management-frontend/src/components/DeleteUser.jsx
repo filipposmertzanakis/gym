@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { deleteUser, getUsers } from '../apiService';
 import UserModal from './UserDeleteModal';
 import UserInfoModal from './UserInfoModal';
+
 import UserUpdateModal from './UserUpdateModal';
 import '../styles/UsersTable.css';
 
@@ -67,6 +68,11 @@ const DeleteUser = () => {
     setIsUpdateModalOpen(false);
   };
 
+  // This onSave callback will refresh the selected user info
+  const handleUserSave = (updatedUser) => {
+    setSelectedUser(updatedUser);
+  };
+
   return (
     <div className="users-container">
       <h2 className="users-title">Manage Users</h2>
@@ -116,8 +122,21 @@ const DeleteUser = () => {
           handleDelete={handleDelete}
         />
       )}
-      {isInfoModalOpen && <UserInfoModal user={selectedUser} onClose={handleCloseInfoModal} />}
-      {isUpdateModalOpen && <UserUpdateModal user={selectedUser} onClose={handleCloseUpdateModal} />}
+
+      {/* Render Info Modal */}
+      {isInfoModalOpen && (
+        <UserInfoModal
+          user={selectedUser}
+          onClose={handleCloseInfoModal}
+        />
+      )}
+      {/* Render Update Modal */}
+      {isUpdateModalOpen && (
+        <UserUpdateModal
+          user={selectedUser}
+          onClose={handleCloseUpdateModal}
+        />
+      )}
     </div>
   );
 };

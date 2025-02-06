@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { updateUser, getUsers, deleteUser } from '../apiService';
+import { updateUser } from '../apiService';
 import '../styles/UpdateModal.css';
-  
 
 const UserUpdateModal = ({ user, onClose, onSave }) => {
-
   const [message, setMessage] = useState('');
-  
+
   const [formData, setFormData] = useState({
     name: user.name || '',
     lastname: user.lastname || '',
@@ -19,8 +17,20 @@ const UserUpdateModal = ({ user, onClose, onSave }) => {
     },
   });
 
-
-
+  // Update the form data if the user prop changes
+  useEffect(() => {
+    setFormData({
+      name: user.name || '',
+      lastname: user.lastname || '',
+      email: user.email || '',
+      role: user.role || '',
+      address: {
+        country: user.address?.country || '',
+        city: user.address?.city || '',
+        street: user.address?.street || '',
+      },
+    });
+  }, [user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,17 +50,23 @@ const UserUpdateModal = ({ user, onClose, onSave }) => {
     }
   };
 
-  // Update a specific user
-    const handleUpdate = async (username) => {
-      const userToUpdate =  user.username === username;
-      try {
-        await updateUser(username, userToUpdate);
-        setMessage(`User ${username} updated successfully`);
-        
-      } catch (error) {
-        setMessage(`Error updating user ${username}: ${error.message || 'Unknown error'}`);
+  const handleUpdate = async () => {
+    try {
+      const updatedUser = { username: user.username, ...formData };
+      await updateUser(user.username, updatedUser);
+      setMessage(`User ${user.username} updated successfully`);
+      if (onSave) {
+        onSave(updatedUser);
       }
-    };
+      if (onClose) {
+        onClose();
+      }
+    } catch (error) {
+      setMessage(
+        `Error updating user ${user.username}: ${error.message || 'Unknown error'}`
+      );
+    }
+  };
 
   return (
     <div className="Umodal-overlay">
@@ -121,8 +137,11 @@ const UserUpdateModal = ({ user, onClose, onSave }) => {
             />
           </div>
         </form>
-        <button onClick={() => handleUpdate(user.username)}>Save</button>
-        <button onClick={onClose} className="close-button">Close</button>
+        <button onClick={handleUpdate}>Save</button>
+        <button onClick={onClose} className="close-button">
+          Close
+        </button>
+        {message && <p>{message}</p>}
       </div>
     </div>
   );
