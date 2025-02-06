@@ -133,3 +133,11 @@ export const updateService = async (serviceName, updatedData) => {
   }
 };
 
+export const cancelBooking = async (bookingId) => {
+  try {
+    const response = await axios.patch(`${API_URL}/bookings/cancel/${bookingId}`);
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};

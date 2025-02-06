@@ -32,6 +32,28 @@ const Services = () => {
     setSelectedService(null);
   };
 
+  // If user is banned from booking, calculate days remaining until next Monday.
+  let bannedMessage = null;
+  if (user && user.status === 'active' && user.cancellationCounter >= 2) {
+    const now = new Date();
+    const currentDay = now.getDay(); // Sunday=0, Monday=1, Tuesday=2, ... Saturday=6
+    let daysUntilMonday;
+    if (currentDay === 1) {
+      // If it's Monday, assume the ban lasts until next Monday.
+      daysUntilMonday = 7;
+    } else if (currentDay === 0) {
+      daysUntilMonday = 1;
+    } else {
+      daysUntilMonday = 8 - currentDay;
+    }
+    bannedMessage = (
+      <p className="booking-warning">
+        You are banned from booking for this week due to excessive cancellations.
+        You can book again in {daysUntilMonday} {daysUntilMonday === 1 ? 'day' : 'days'}.
+      </p>
+    );
+  }
+
   return (
     <div className="services-container">
       <h1>Services</h1>
@@ -42,9 +64,17 @@ const Services = () => {
             <h2>{service.price}$</h2>
             <p>{service.description}</p>
             {user && user.status === 'active' && (
-              <button>
-                <Link to="/services/Booking" state={{ service }}>Book</Link>
-              </button>
+              <>
+                {user.cancellationCounter < 2 ? (
+                  <button>
+                    <Link to="/services/Booking" state={{ service }}>
+                      Book
+                    </Link>
+                  </button>
+                ) : (
+                  bannedMessage
+                )}
+              </>
             )}
           </li>
         ))}
