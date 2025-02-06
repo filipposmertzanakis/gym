@@ -8,7 +8,7 @@ const UserInfoModal = ({ user, onClose}) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2 className='title-modal'> User {user.username} Info:</h2>
+        <h2 className='title-modal'> User {user.username} Info</h2>
         <p><strong>First Name:</strong> {user.name}</p>
         <p><strong>Last Name:</strong> {user.lastname}</p>
         <p><strong>Email:</strong> {user.email}</p>

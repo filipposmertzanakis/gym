@@ -2,19 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { deleteUser, getUsers } from '../apiService';
 import UserModal from './UserDeleteModal';
 import UserInfoModal from './UserInfoModal';
-
 import UserUpdateModal from './UserUpdateModal';
 import '../styles/UsersTable.css';
-
 
 const DeleteUser = () => {
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState('');
-
-  const [selectedUser, setSelectedUser] = useState(null); // State to manage the selected user for both modals
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // State to control delete modal
-  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false); // State to control info modal
-  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false); // State to control info modal
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -33,50 +30,48 @@ const DeleteUser = () => {
     try {
       await deleteUser(username);
       setMessage('User deleted successfully');
-      setUsers(users.filter(user => user.username !== username));
-      handleCloseDeleteModal(); // Close the delete modal after action
+      setUsers(users.filter((user) => user.username !== username));
+      handleCloseDeleteModal();
     } catch (error) {
       setMessage(`Error deleting user: ${error.message || 'Unknown error'}`);
     }
   };
 
-  // Open/Close Delete Modal
   const handleOpenDeleteModal = (user) => {
-    setSelectedUser(user); // Set the selected user
-    setIsDeleteModalOpen(true); // Open the delete modal
+    setSelectedUser(user);
+    setIsDeleteModalOpen(true);
   };
 
   const handleCloseDeleteModal = () => {
-    setSelectedUser(null); // Clear the selected user
-    setIsDeleteModalOpen(false); // Close the delete modal
+    setSelectedUser(null);
+    setIsDeleteModalOpen(false);
   };
 
-  // Open/Close Info Modal
   const handleOpenInfoModal = (user) => {
-    setSelectedUser(user); // Set the selected user
-    setIsInfoModalOpen(true); // Open the info modal
+    setSelectedUser(user);
+    setIsInfoModalOpen(true);
   };
 
   const handleCloseInfoModal = () => {
-    setSelectedUser(null); // Clear the selected user
-    setIsInfoModalOpen(false); // Close the info modal
+    setSelectedUser(null);
+    setIsInfoModalOpen(false);
   };
-  // Open/Close Update Modal
+
   const handleOpenUpdateModal = (user) => {
-    setSelectedUser(user); // Set the selected user
-    setIsUpdateModalOpen(true); // Open the info modal
+    setSelectedUser(user);
+    setIsUpdateModalOpen(true);
   };
 
   const handleCloseUpdateModal = () => {
-    setSelectedUser(null); // Clear the selected user
-    setIsUpdateModalOpen(false); // Close the info modal
+    setSelectedUser(null);
+    setIsUpdateModalOpen(false);
   };
 
   return (
-    <div>
-      <h2>Manage Users</h2>
-      {message && <p>{message}</p>}
-      <table>
+    <div className="users-container">
+      <h2 className="users-title">Manage Users</h2>
+      {message && <p className="users-message">{message}</p>}
+      <table className="users-table">
         <thead>
           <tr>
             <th>Username</th>
@@ -85,24 +80,35 @@ const DeleteUser = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map(user => (
+          {users.map((user) => (
             <tr key={user.username}>
               <td>{user.username}</td>
               <td>{user.role}</td>
-              <td>
-                {/* Open the info modal */}
-                <button onClick={() => handleOpenInfoModal(user)}>View Info</button>
-                {/* Open the delete modal */}
-                <button onClick={() => handleOpenDeleteModal(user)}>Delete</button>
-                {/* Open the update modal */}
-                <button onClick={() => handleOpenUpdateModal(user)}>Update</button>
+              <td className="users-actions">
+                <button
+                  className="button view-button"
+                  onClick={() => handleOpenInfoModal(user)}
+                >
+                  View Info
+                </button>
+                <button
+                  className="button delete-button"
+                  onClick={() => handleOpenDeleteModal(user)}
+                >
+                  Delete
+                </button>
+                <button
+                  className="button update-button"
+                  onClick={() => handleOpenUpdateModal(user)}
+                >
+                  Update
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      {/* Render Delete Modal */}
       {isDeleteModalOpen && (
         <UserModal
           user={selectedUser}
@@ -110,21 +116,8 @@ const DeleteUser = () => {
           handleDelete={handleDelete}
         />
       )}
-
-      {/* Render Info Modal */}
-      {isInfoModalOpen && (
-        <UserInfoModal
-          user={selectedUser}
-          onClose={handleCloseInfoModal}
-        />
-      )}
-      {/* Render Update Modal */}
-      {isUpdateModalOpen && (
-        <UserUpdateModal
-          user={selectedUser}
-          onClose={handleCloseUpdateModal}
-        />
-      )}
+      {isInfoModalOpen && <UserInfoModal user={selectedUser} onClose={handleCloseInfoModal} />}
+      {isUpdateModalOpen && <UserUpdateModal user={selectedUser} onClose={handleCloseUpdateModal} />}
     </div>
   );
 };

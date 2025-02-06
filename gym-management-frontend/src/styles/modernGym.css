@@ -2,7 +2,7 @@
 
 /* Define your color variables for a white & silver theme */
 :root {
-  --primary-bg: #ffffff;    /* Pure white for a clean main background */
+  --primary-bg: #cbc6c6;    /* Pure white for a clean main background */
   --secondary-bg: #f0f0f0;  /* A noticeably different light gray for contrast */
   --accent: #909090;        /* A darker silver to serve as a clear accent */
   --text-color: #333333;    /* Consistent dark tone for legibility */
@@ -43,53 +43,32 @@ body {
   background-color: var(--hover-bg);
 }
 
-/* Buttons */
+/* Buttons 
 button {
-  background-color: #ff5722; /* flat background */
-  border: none;                  /* no borders for a clean look */
-  padding: 10px 20px;            /* comfortable clickable area */
+  background-color: #ff5722; 
+  border: none;                  
+  padding: 10px 20px;            
   font-size: 1rem;
-  color: rgb(0, 0, 0);                  /* set text color to black */
-  text-decoration: none;         /* ensures text is not underlined */
+  color: rgb(0, 0, 0);                 
+  text-decoration: none;         
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover,
 button:focus {
-  background-color: rgba(0, 0, 0, 0.05); /* subtle background on hover/focus */
-                  outline:none;       /* remove default focus outline */
+  background-color: rgba(0, 0, 0, 0.05); 
+                  outline:none;      
   transform: scale(1.02);
-  color:#000000;               /* slight scale effect on hover */
-}
-
+  color:#000000;               
+}*/
 /* For buttons that wrap links (if any), ensure the anchor is also not underlined */
 button a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Tables */
-table {
-  width: 80%;
-  margin: 20px auto;
-  border-collapse: collapse;
-  background-color: var(--primary-bg);
-  border: 1px solid var(--border-color);
-}
 
-th,
-td {
-  padding: 12px 15px;
-  text-align: left;
-  border: 1px solid var(--border-color);
-}
-
-th {
-  background-color: var(--accent);
-  color: var(--primary-bg);
-  text-transform: uppercase;
-}
 
 /* Forms */
 input, 

@@ -1,68 +1,130 @@
-/* General Body Styling */
 
-/* Header Navigation Bar */
-
-
-
-
-/* Page Title */
-
-
-/* Table Styling */
-table {
-  width: 80%;
-  margin: 20px auto;
-  border-collapse: collapse;
-  background-color: #34495e; /* Darker blue for table */
-  border: 1px solid #2c3e50;
+.users-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-th, td {
+.users-title {
+  margin-bottom: 50px;
+  font-size: 28px;
+  color: #d35400; 
+  text-transform: uppercase; 
+  letter-spacing: 2px;
+}
+
+
+.users-message {
+  text-align: center;
+  color: #c0392b;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #34495e; 
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.users-table th,
+.users-table td {
   padding: 12px 15px;
-  text-align: left;
+  text-align: center;
   color: #ecf0f1;
   
 }
 
-.delete_button{
-  text-align: center;
-}
-
-th {
-  background-color: #27AE60; /* Green header */
+.users-table th {
+  background-color: #d35400; 
   color: white;
   text-transform: uppercase;
 }
 
-tr:nth-child(even) {
-  background-color: #2c3e50; /* Alternate row background */
+.users-table tr:nth-child(even) {
+  background-color: #2c3e50; 
 }
 
-tr:hover {
-  background-color: #191a1e;; /* Highlight row */
-  
+
+
+.users-table tr:hover {
+  background-color: #191a1e; 
 }
 
-/* Delete Button Styling */
-button {
-  background-color: #e74c3c; /* Red color */
-  color: white;
-  padding: 8px 15px;
+.users-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border: none;
+}
+
+
+.button {
+  padding: 8px 12px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
   font-size: 14px;
+  text-transform: uppercase;
 }
 
-button:hover {
-  background-color: #c0392b; /* Darker red on hover */
-}
-
-/* Footer Styling (Optional if there’s a footer) */
-footer {
-  margin-top: 20px;
-  text-align: center;
-  padding: 10px 20px;
-  background-color: #1abc9c; /* Green footer */
+.view-button {
+  background-color: #2ecc71;
   color: white;
+}
+
+.view-button:hover {
+  background-color: #27ae60;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+
+.update-button {
+  background-color: #3498db;
+  color: white;
+}
+
+.update-button:hover {
+  background-color: #2980b9;
+}
+
+
+@media (max-width: 768px) {
+  .users-table {
+    font-size: 14px;
+  }
+
+  .users-actions {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .users-title {
+    font-size: 20px;
+  }
+
+  .users-table th,
+  .users-table td {
+    font-size: 12px;
+    padding: 8px;
+  }
 }
