@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
-import { createService } from '../apiService';
+import React, { useState, useEffect } from 'react';
+import { createService, getUsers } from '../apiService';
 
 const CreateService = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [schedule, setSchedule] = useState([{ day: '', time: '', trainer: '', maxCapacity: 0 }]);
+  const [schedule, setSchedule] = useState([{ day: '', time: '', maxCapacity: 0 }]);
   const [price, setPrice] = useState(0);
+  const [trainer, setTrainer] = useState('');
   const [message, setMessage] = useState('');
+  const [gymnasts, setGymnasts] = useState([]);
+
+  // Fetch users and filter for gymnasts
+  useEffect(() => {
+    const fetchGymnasts = async () => {
+      try {
+        const users = await getUsers();
+        const gymnastUsers = users.filter(user => user.role === 'gymnast');
+        setGymnasts(gymnastUsers);
+      } catch (error) {
+        console.error('Error fetching gymnasts:', error);
+      }
+    };
+    fetchGymnasts();
+  }, []);
 
   const handleChangeSchedule = (index, e) => {
     const values = [...schedule];
@@ -15,7 +31,7 @@ const CreateService = () => {
   };
 
   const handleAddSchedule = () => {
-    setSchedule([...schedule, { day: '', time: '', trainer: '', maxCapacity: 0 }]);
+    setSchedule([...schedule, { day: '', time: '', maxCapacity: 0 }]);
   };
 
   const handleRemoveSchedule = (index) => {
@@ -26,15 +42,17 @@ const CreateService = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newService = { name, description, schedule, price };
+    const newService = { name, description, schedule, trainer, price };
 
     try {
       await createService(newService);
       setMessage('Service created successfully');
+      // Reset form values
       setName('');
       setDescription('');
-      setSchedule([{ day: '', time: '', trainer: '', maxCapacity: 0 }]);
+      setSchedule([{ day: '', time: '', maxCapacity: 0 }]);
       setPrice(0);
+      setTrainer('');
     } catch (error) {
       setMessage(error.response?.data?.message || 'Error creating service');
     }
@@ -56,7 +74,19 @@ const CreateService = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        
+        <label>Assign Trainer (Gymnast):</label>
+        <select
+          value={trainer}
+          onChange={(e) => setTrainer(e.target.value)}
+          required
+        >
+          <option value="">Select Gymnast</option>
+          {gymnasts.map(gymnast => (
+            <option key={gymnast._id} value={gymnast._id}>
+              {gymnast.name} {gymnast.lastname}
+            </option>
+          ))}
+        </select>
         {schedule.map((session, index) => (
           <div key={index}>
             <input
@@ -76,14 +106,6 @@ const CreateService = () => {
               required
             />
             <input
-              type="text"
-              name="trainer"
-              placeholder="Trainer"
-              value={session.trainer}
-              onChange={(e) => handleChangeSchedule(index, e)}
-              required
-            />
-            <input
               type="number"
               name="maxCapacity"
               placeholder="Max Capacity"
@@ -94,8 +116,7 @@ const CreateService = () => {
             <button type="button" onClick={() => handleRemoveSchedule(index)}>Remove</button>
           </div>
         ))}
-        <button type="button" onClick={handleAddSchedule}>Add another schedule</button>
-
+        <button type="button" onClick={handleAddSchedule}>Add Schedule</button>
         <input
           type="number"
           placeholder="Price"
@@ -103,7 +124,6 @@ const CreateService = () => {
           onChange={(e) => setPrice(e.target.value)}
           required
         />
-
         <button type="submit">Create Service</button>
       </form>
       {message && <p>{message}</p>}

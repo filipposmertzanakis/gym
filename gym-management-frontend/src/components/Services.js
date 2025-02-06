@@ -63,6 +63,9 @@ const Services = () => {
             <h2>{service.name}</h2>
             <h2>{service.price}$</h2>
             <p>{service.description}</p>
+            {service.trainer?.name && (
+              <p className="gymnast-info">Gymnast: {service.trainer.name}</p>
+            )}
             {user && user.status === 'active' && (
               <>
                 {user.cancellationCounter < 2 ? (
