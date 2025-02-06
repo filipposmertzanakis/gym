@@ -49,21 +49,58 @@ const Users = () => {
   return (
     <div>
       <h1>Users</h1>
-      <ul>
-        {users.map((user) => (
-          <li key={user.username}>
-            <span>
-              {user.name} ({user.username}) - Status: {user.status}
-            </span>
-            {user.status === 'pending' && (
-              <>
-                <button onClick={() => handleAccept(user.username)}>Accept</button>
-                <button onClick={() => handleDecline(user.username)}>Decline</button>
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
+      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        <thead>
+          <tr style={{ backgroundColor: '#f4f4f4', textAlign: 'left' }}>
+            <th style={{ padding: '10px', border: '1px solid #ddd' }}>Name & Surname </th>
+            <th style={{ padding: '10px', border: '1px solid #ddd' }}>Status</th>
+            <th style={{ padding: '10px', border: '1px solid #ddd' }}>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.username} style={{ backgroundColor: user.status === 'pending' ? '#fff' : '#f9f9f9' }}>
+              <td style={{ padding: '10px', border: '1px solid #ddd' }}>
+                {user.name} {user.surname}
+              </td>
+              <td style={{ padding: '10px', border: '1px solid #ddd' }}>{user.status}</td>
+              <td style={{ padding: '10px', border: '1px solid #ddd' }}>
+                {user.status === 'pending' && (
+                  <>
+                    <button
+                      style={{
+                        marginRight: '10px',
+                        padding: '5px 10px',
+                        backgroundColor: '#4CAF50',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '5px',
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => handleAccept(user.username)}
+                    >
+                      Accept
+                    </button>
+                    <button
+                      style={{
+                        padding: '5px 10px',
+                        backgroundColor: '#F44336',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '5px',
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => handleDecline(user.username)}
+                    >
+                      Decline
+                    </button>
+                  </>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
