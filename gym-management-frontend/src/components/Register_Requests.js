@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getPendingRegistrations, acceptRegistration, declineRegistration } from '../apiService';
+import '../styles/Register_Table.css';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -47,51 +48,32 @@ const Users = () => {
   };
 
   return (
-    <div>
+    <div className="table-container">
       <h1>Users</h1>
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <table className="custom-table">
         <thead>
-          <tr style={{ backgroundColor: '#f4f4f4', textAlign: 'left' }}>
-            <th style={{ padding: '10px', border: '1px solid #ddd' }}>Name & Surname </th>
-            <th style={{ padding: '10px', border: '1px solid #ddd' }}>Status</th>
-            <th style={{ padding: '10px', border: '1px solid #ddd' }}>Actions</th>
+          <tr>
+            <th>Name & Surname </th>
+            <th>Surname</th>
+            <th>Username</th>
+            <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <tr key={user.username} style={{ backgroundColor: user.status === 'pending' ? '#fff' : '#f9f9f9' }}>
-              <td style={{ padding: '10px', border: '1px solid #ddd' }}>
-                {user.name} {user.surname}
-              </td>
-              <td style={{ padding: '10px', border: '1px solid #ddd' }}>{user.status}</td>
-              <td style={{ padding: '10px', border: '1px solid #ddd' }}>
+          {users.map((user, index) => (
+            <tr key={user.username} className={ index % 2 === 0 ? 'row-even' : 'row-odd'}>
+              <td>{user.name}</td>
+              <td>{user.lastname}</td>
+              <td>{user.username}</td>
+              <td>{user.status}</td>
+              <td className='Accept_Decline_btn'>
                 {user.status === 'pending' && (
                   <>
-                    <button
-                      style={{
-                        marginRight: '10px',
-                        padding: '5px 10px',
-                        backgroundColor: '#4CAF50',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '5px',
-                        cursor: 'pointer',
-                      }}
-                      onClick={() => handleAccept(user.username)}
-                    >
+                    <button className="btn-accept" onClick={() => handleAccept(user.username)}>
                       Accept
                     </button>
-                    <button
-                      style={{
-                        padding: '5px 10px',
-                        backgroundColor: '#F44336',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '5px',
-                        cursor: 'pointer',
-                      }}
-                      onClick={() => handleDecline(user.username)}
-                    >
+                    <button className="btn-decline" onClick={() => handleDecline(user.username)}>
                       Decline
                     </button>
                   </>
