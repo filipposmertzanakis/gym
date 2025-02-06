@@ -1,0 +1,23 @@
+CSS -- πρεπει να γινει καλυτερο
+Login -- πρεπει να κανει redirect στο home page(εχωντας στο session τα creds του)
+services -- πρεπει να βαλουμε εικονες , γενικα πρεπει να δουμε πως θα γινει με τις εικονες στο db
+booking -- να κανουμε error control kai na ftiaksoume tous orous poy leei (akurwsh 2 wres prin , ban meta apo polles akurwseis)
+ register -- The registration form should include dropdown lists for “Χώρα” (Country) and “Πόλη” (City).
+• These dropdown values need to be retrieved dynamically through an external REST API (for example, the Countries & Cities API), which is not implemented yet.
+Services Component – Image Integration
+ Booking Module – Error Control and Business Rules
+ • The news/announcements section currently allows creation and listing but lacks edit/delete functionality that the administrator should have.
+ managing trainers, individual programs, and group classes (με πληροφορίες για ημέρα, ώρα, γυμναστή και μέγιστη χωρητικότητα) are not fully develope
+ • Across all pages and components, thorough exception handling is necessary to keep the system stable—this mechanism isn’t uniformly in place yet.
+ mynymata ston xrhsth se olh thn efarmogh
+ eparkhs sxoliasmos
+
+ User Side -
+ anazhthsh diathesimothtas programmatos , oxi ola ta programmata mazi xwris filtering
+ ean einai diathesimo tote mporei na kanei book(na exei kai capacity)
+ akurwsh ews kai 2 wres prin mesw to profile.js
+ ean kanei 2 akurwseis mesa sth bdomada den tha mporei na kleisei kati mexri thn epomenh deftera 
+ sto profile.js tha prepei na einai editable mono oi krathseis poy den exoyn ginei hdh
+
+ admin side - 
+ edit kai delete news
