@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { deleteServiceByName, getServices } from '../apiService';
+import '../styles/delete_services.css';
 
 const DeleteServiceByName = () => {
   const [services, setServices] = useState([]);
@@ -37,16 +38,32 @@ const DeleteServiceByName = () => {
   };
 
   return (
-    <div>
+    <div className="delete-service-container">
       <h3>Available Services</h3>
-      <ul>
-        {services.map(service => (
-          <li key={service._id}>
-            {service.name}
-            <button onClick={() => handleDelete(service.name)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+      {message && <p className="message">{message}</p>}
+      <table className="services-table">
+        <thead>
+          <tr>
+            <th>Service Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {services.map((service) => (
+            <tr key={service._id}>
+              <td>{service.name}</td>
+              <td>
+                <button
+                  className="delete-button"
+                  onClick={() => handleDelete(service.name)}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

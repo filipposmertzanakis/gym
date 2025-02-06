@@ -1,0 +1,117 @@
+
+.create-service-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fce9d5;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  color: #ECF0F1;
+  font-family: 'Arial', sans-serif;
+}
+
+.create-service-container h2 {
+  text-align: center;
+  color: #d35400;
+  margin-bottom: 20px;
+}
+
+/* Input Fields Styling */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #d35400;
+  border-radius: 8px;
+  background: #f3e3cf;
+  color: rgb(0, 0, 0);
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #df5b02;
+  background: #1f2e3c57;
+}
+
+textarea.input-field {
+  resize: none;
+  height: 100px;
+}
+
+/* Labels Styling */
+.input-label {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+  color: #BDC3C7;
+}
+
+/* Schedule Row Styling */
+.schedule-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.schedule-item{
+  margin-bottom: 30px;
+}
+
+/* Button Styling */
+button {
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-schedule-button {
+  padding: 10px 15px;
+  background-color: #3498DB;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.add-schedule-button:hover {
+  background-color: #2980B9;
+}
+
+.remove-button {
+  padding: 10px 15px;
+  background-color: #E74C3C;
+  color: white;
+}
+
+.remove-button:hover {
+  background-color: #C0392B;
+}
+
+.submit-button {
+  padding: 12px 20px;
+  width: 100%;
+  background-color: #d35400;
+  color: white;
+}
+
+.submit-button:hover {
+  background-color: #27AE60;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+  .create-service-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .schedule-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

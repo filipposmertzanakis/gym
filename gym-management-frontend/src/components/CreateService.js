@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createService, getUsers } from '../apiService';
+import '../styles/create_service.css';
 
 const CreateService = () => {
   const [name, setName] = useState('');
@@ -59,38 +60,42 @@ const CreateService = () => {
   };
 
   return (
-    <div>
+    <div className="create-service-container">
       <h2>Create New Service</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
+          className="input-field"
           placeholder="Service Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
         <textarea
+          className="input-field"
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <label>Assign Trainer (Gymnast):</label>
+        <label className="form-label">Assign Trainer (Gymnast):</label>
         <select
+          className="input-field"
           value={trainer}
           onChange={(e) => setTrainer(e.target.value)}
           required
         >
           <option value="">Select Gymnast</option>
-          {gymnasts.map(gymnast => (
+          {gymnasts.map((gymnast) => (
             <option key={gymnast._id} value={gymnast._id}>
               {gymnast.name} {gymnast.lastname}
             </option>
           ))}
         </select>
         {schedule.map((session, index) => (
-          <div key={index}>
+          <div key={index} className="schedule-item">
             <input
               type="date"
+              className="input-field"
               name="day"
               placeholder="Day"
               value={session.day}
@@ -99,6 +104,7 @@ const CreateService = () => {
             />
             <input
               type="time"
+              className="input-field"
               name="time"
               placeholder="Time"
               value={session.time}
@@ -107,28 +113,41 @@ const CreateService = () => {
             />
             <input
               type="number"
+              className="input-field"
               name="maxCapacity"
               placeholder="Max Capacity"
               value={session.maxCapacity}
               onChange={(e) => handleChangeSchedule(index, e)}
               required
             />
-            <button type="button" onClick={() => handleRemoveSchedule(index)}>Remove</button>
+            <button
+              type="button"
+              className="remove-button"
+              onClick={() => handleRemoveSchedule(index)}
+            >
+              Remove
+            </button>
           </div>
         ))}
-        <button type="button" onClick={handleAddSchedule}>Add Schedule</button>
+        <button type="button" className="add-schedule-button" onClick={handleAddSchedule}>
+          Add Schedule
+        </button>
         <input
           type="number"
+          className="input-field"
           placeholder="Price"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           required
         />
-        <button type="submit">Create Service</button>
+        <button type="submit" className="submit-button">
+          Create Service
+        </button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className="message">{message}</p>}
     </div>
   );
+  
 };
 
 export default CreateService;
