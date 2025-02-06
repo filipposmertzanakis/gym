@@ -7,10 +7,10 @@ const serviceSchema = new mongoose.Schema({
         {
             day: String,
             time: String,
-            trainer: String,
             maxCapacity: Number,
         },
     ],
+    trainer: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     price: Number,
     createdAt: { type: Date, default: Date.now },
 });

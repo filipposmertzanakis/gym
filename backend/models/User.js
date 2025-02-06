@@ -7,12 +7,14 @@ const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     lastname: {type : String , required: true},
     email: { type: String, required: true, unique: true },
-    status: { type: String, enum:['pending' , 'approved' , 'declined'] , default: 'pending' ,required :true }, 
+    status: { type: String, enum:['pending' , 'active' , 'declined'] , default: 'pending' ,required :true }, 
     address: {
         country: { type: String, required: true },
         city: { type: String, required: true },
         street: { type: String, required: true }
     },
+    cancellationCounter: { type: Number, default: 0 },
+    lastCancellationReset: { type: Date },
     createdAt: { type: Date, default: Date.now },
 });
 
