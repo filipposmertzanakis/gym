@@ -49,7 +49,7 @@ button {
   border: none;                  /* no borders for a clean look */
   padding: 10px 20px;            /* comfortable clickable area */
   font-size: 1rem;
-  color: black;                  /* set text color to black */
+  color: rgb(0, 0, 0);                  /* set text color to black */
   text-decoration: none;         /* ensures text is not underlined */
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -58,8 +58,9 @@ button {
 button:hover,
 button:focus {
   background-color: rgba(0, 0, 0, 0.05); /* subtle background on hover/focus */
-  outline: none;                        /* remove default focus outline */
-  transform: scale(1.02);               /* slight scale effect on hover */
+                  outline:none;       /* remove default focus outline */
+  transform: scale(1.02);
+  color:#000000;               /* slight scale effect on hover */
 }
 
 /* For buttons that wrap links (if any), ensure the anchor is also not underlined */
