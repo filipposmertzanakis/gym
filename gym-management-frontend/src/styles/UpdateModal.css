@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.5); /* Slightly lighter for consistency */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,56 +12,60 @@
 }
 
 .Umodal-content {
-  background: #1C2833;
-  color: #ECF0F1;
-  padding: 40px;
+  background: white;
+  color: black;
+  padding: 30px;
   border-radius: 15px;
-  width: 450px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   font-family: 'Arial', sans-serif;
   position: relative;
 }
 
 .title-Umodal {
-  color: #2ECC71;
+  color: #27AE60; /* Consistent green title */
   font-size: 1.8rem;
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .Umodal-content form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  gap: 20px; /* Added more space between inputs */
 }
 
 .Umodal-content label {
   font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 5px;
+  font-weight: bold;
+  margin-bottom: 8px;
   display: block;
-  color: #BDC3C7;
+  color: #2C3E50; /* Stylish dark blue color for labels */
 }
 
 .Umodal-content input {
   width: 100%;
-  padding: 12px 10px;
-  border: 2px solid #2ECC71;
+  padding: 12px;
+  border: 1.5px solid #ddd;
   border-radius: 10px;
-  background: #273746;
-  color: white;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  background: #f9f9f9;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 15px; /* Added space between inputs */
 }
 
 .Umodal-content input:focus {
   outline: none;
   border-color: #27AE60;
-  background: #1F2E3C;
+  box-shadow: 0 0 5px rgba(39, 174, 96, 0.5);
+  background: #fff;
 }
 
 .Umodal-content input::placeholder {
-  color: #7F8C8D;
-  font-size: 0.9rem;
+  color: #aaa;
+  font-size: 0.85rem;
 }
 
 .Umodal-content .single-row {
@@ -80,15 +84,34 @@
 }
 
 button.close-button {
-  background: #E74C3C;
+  background: #E74C3C; /* Consistent red button for close */
   color: white;
 }
 
 button.close-button:hover {
   background: #C0392B;
+  transform: scale(1.05); /* Slight hover effect */
 }
 
-@media screen and (max-width: 600px) {
+button.save-button {
+  background: #27AE60; /* Green save button */
+  color: white;
+  margin-right: 10px;
+  padding: 12px 25px; /* Slightly larger buttons for better UX */
+  box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3); /* Added subtle shadow */
+}
+
+button.save-button:hover {
+  background: #229954;
+  transform: scale(1.05); /* Slight hover effect */
+}
+
+button:active {
+  transform: scale(0.95); /* Click feedback */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
   .Umodal-content {
     width: 90%;
     padding: 20px;
@@ -96,10 +119,26 @@ button.close-button:hover {
 
   .Umodal-content form {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 15px; /* Adjust spacing for smaller screens */
   }
 
   .Umodal-content .single-row {
     grid-column: 1;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .Umodal-content {
+    padding: 15px;
+  }
+
+  .Umodal-content form {
+    gap: 10px;
+  }
+
+  button.save-button,
+  button.close-button {
+    font-size: 0.85rem;
+    padding: 10px 15px; /* Adjust button size for mobile */
   }
 }
