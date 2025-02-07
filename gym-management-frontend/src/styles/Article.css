@@ -1,0 +1,50 @@
+.article-page-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  background-color: var(--accent, #ff5722);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #e64a19;
+}
+
+.article-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.article-meta {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.article-body {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.article-error {
+  color: red;
+  font-size: 1.2rem;
+  text-align: center;
+}

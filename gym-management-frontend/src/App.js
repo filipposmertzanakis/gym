@@ -7,6 +7,7 @@ import AdminPage from './components/AdminPage';
 import DeleteUser from './components/DeleteUser';
 import UpdateUser from './components/UpdateUser';
 import News from './components/News';
+import ArticlePage from './components/ArticlePage'; 
 import './styles/App.css';
 import './styles/navbar.css';
 import './styles/Services.css';
@@ -108,6 +109,7 @@ function App() {
           <Route path="/AdminPage" element={<AdminPage />} />
           <Route path="/services" element={<Services />} />
           <Route path="/News" element={<News />} />
+          <Route path="/News/:articleId" element={<ArticlePage />} />
           <Route path="/services/Booking" element={<Booking />} />
           <Route path="/AdminPage/DeleteUser" element={<DeleteUser />} />
           <Route path="/AdminPage/CreateService" element={<CreateService />} />
