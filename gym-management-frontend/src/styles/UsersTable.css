@@ -1,4 +1,3 @@
-
 .users-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -8,7 +7,8 @@
 .users-title {
   margin-bottom: 50px;
   font-size: 28px;
-  color: #d35400; 
+  text-align: center;
+  color: var(--accent); 
   text-transform: uppercase; 
   letter-spacing: 2px;
 }
@@ -41,7 +41,7 @@
 }
 
 .users-table th {
-  background-color: #d35400; 
+  background-color: var(--accent); 
   color: white;
   text-transform: uppercase;
 }
@@ -83,12 +83,12 @@
   background-color: #27ae60;
 }
 
-.delete-button {
-  background-color: #e74c3c;
+.delete-button1{
+  background-color: #c82b1a;
   color: white;
 }
 
-.delete-button:hover {
+.delete-button1:hover {
   background-color: #c0392b;
 }
 

@@ -1,16 +1,15 @@
-/* modernTheme.css */
 
-/* Define your color variables for a white & silver theme */
 :root {
-  --primary-bg: #cbc6c6;    /* Pure white for a clean main background */
-  --secondary-bg: #f0f0f0;  /* A noticeably different light gray for contrast */
-  --accent: #909090;        /* A darker silver to serve as a clear accent */
-  --text-color: #333333;    /* Consistent dark tone for legibility */
-  --border-color: #b3b3b3;  /* A distinct border color that stands out from the backgrounds */
-  --hover-bg: #dcdcdc;      /* A clear, noticeable hover background effect */
+  --primary-bg: #1a1a1a;
+  --secondary-bg: #f0f0f0;  
+  --accent: #ff5722;
+  --text-color: #333;
+  --transition: all 0.3s ease;
+  --border-color: #b3b3b3;  
+  --hover-bg: #dcdcdc;      
 }
 
-/* Global styles */
+
 body {
   background-color: var(--primary-bg);
   color: var(--text-color);
@@ -19,37 +18,13 @@ body {
   padding: 0;
 }
 
-/* Navbar */
-.navbar {
-  background-color: var(--primary-bg);
-  border-bottom: 1px solid var(--accent);
-  color: var(--text-color);
-  padding: 10px 30px;
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
-}
 
-.navbar a {
-  color: var(--text-color);
-  text-decoration: none;
-  margin: 0 15px;
-  padding: 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.navbar a:hover {
-  background-color: var(--hover-bg);
-}
-
-/* Buttons 
 button {
   background-color: #ff5722; 
   border: none;                  
   padding: 10px 20px;            
   font-size: 1rem;
-  color: rgb(0, 0, 0);                 
+  color: rgb(0, 0, 0);                  
   text-decoration: none;         
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -58,59 +33,15 @@ button {
 button:hover,
 button:focus {
   background-color: rgba(0, 0, 0, 0.05); 
-                  outline:none;      
+  outline:none;       
   transform: scale(1.02);
   color:#000000;               
-}*/
-/* For buttons that wrap links (if any), ensure the anchor is also not underlined */
+}
+
+
 button a {
   text-decoration: none;
   color: inherit;
 }
 
 
-
-/* Forms */
-input, 
-textarea {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 15px;
-  background-color: var(--secondary-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  font-size: 16px;
-  color: var(--text-color);
-}
-
-input:focus, 
-textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-}
-
-/* Modals */
-.modal-overlay,
-.Umodal-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
-
-.modal-content,
-.Umodal-content {
-  background-color: var(--primary-bg);
-  color: var(--text-color);
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Other common sections can be updated similarly... */

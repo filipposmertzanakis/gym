@@ -1,15 +1,107 @@
 .navbar {
-  color: #27AE60;
-  font-family: "Rubik", sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  background-color: silver;
-  padding: 10px 30px;
   display: flex;
-  justify-content: space-between; 
   align-items: center;
-  border-bottom: 3px solid  #27AE60 ;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: var(--primary-bg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--accent, #58bc82);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
+
+.logo:hover {
+  color: var(--accent-hover, #46a671);
+}
+
+
+.navbar nav {
+  display: flex;
+  gap: 20px;
+}
+
+
+.navbar nav a {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--secondary-bg);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar nav a:hover {
+  background-color: var(--accent, #58bc82);
+  color: var(--text-color-hover, #fff);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  font-size: 1rem;
+  color: #000;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: var(--accent-light);
+  color: white;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: var(--text-color, #fff);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+  transform: rotate(90deg);
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .navbar nav {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    background: var(--primary-bg, #1a1a1a);
+    padding: 10px 0;
+    border-top: 1px solid var(--border-color, #333);
+    align-items: center;
+  }
+
+  .navbar.nav-open nav {
+    display: flex;
+  }
+
+ 
+  .menu-toggle {
+    display: block;
+  }
+}

@@ -1,170 +1,156 @@
-/* Adjusted styling for the Register component to match the website */
 
-/* Container for the entire page */
 .page-container {
-  background: var(--primary-bg, #1a1a1a);
   min-height: 100vh;
-  padding-top: 80px;
+  padding: 50px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Register form container */
+
 .register-form {
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
   width: 100%;
-  max-width: 400px;
+  max-width: 900px;
+  transition: all 0.3s ease;
 }
 
-/* Main form styling */
+
 .form {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-wrap: wrap;
+  gap: 20px;
   padding: 30px;
-  border-radius: 20px;
-  background-color: var(--secondary-bg, #333);
-  border: 1px solid var(--border-color, #333);
+  border-radius: 16px;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border-color);
 }
 
-/* Form title */
+
 .title {
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 32px;
+  font-weight: 700;
   letter-spacing: 1px;
-  color: var(--accent, #00bfff);
+  color: var(--accent);
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  width: 100%;
   position: relative;
 }
 
-/* Optional decorative dots at the title edges */
-.title::before,
-.title::after {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: var(--accent, #00bfff);
-  top: 50%;
-  transform: translateY(-50%);
-}
-.title::before {
-  left: -20px;
-}
-.title::after {
-  right: -20px;
-  animation: pulse 1s linear infinite;
-}
-
-/* Message text */
-.message {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.8);
+.Signup-message {
+  font-size: 20px;
+  color: black;
   text-align: center;
   margin-bottom: 20px;
+  width: 100%;
 }
 
-/* Flex container for side-by-side inputs */
+
 .flex {
   display: flex;
-  gap: 15px;
+  gap: 20px;
+  flex: 1;
 }
 
-/* Label & input container styling */
+
+.input {
+  width: 100%;
+  padding: 14px 12px;
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  outline: none;
+}
+
+
 .form label {
   position: relative;
   width: 100%;
 }
 
-/* Input styling */
-.input {
-  width: 100%;
-  padding: 12px 10px;
-  background-color: var(--secondary-bg, #333);
-  color: var(--text-color, #fff);
-  border: 1px solid var(--border-color, #333);
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-/* Floating label effect */
 .form label span {
+  display: none;
   position: absolute;
-  left: 12px;
   top: 50%;
+  left: 14px;
   transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
   pointer-events: none;
   transition: all 0.3s ease;
 }
 
-/* Shrink label when input is focused or filled */
 .input:focus + span,
 .input:not(:placeholder-shown) + span {
-  top: 0;
-  transform: translateY(-50%);
+  display: block;
+  top: -10px;
+  left: 10px;
   font-size: 12px;
-  color: var(--accent, #00bfff);
-  background-color: var(--secondary-bg, #333);
+  color: var(--accent,);
+  background-color: var(--secondary-bg,);
   padding: 0 5px;
 }
 
-/* Submit button styling */
+
 .submit {
-  padding: 12px;
+  padding: 14px;
+  width: 100%;
   border: none;
-  border-radius: 5px;
-  background-color: var(--accent, #00bfff);
-  color: var(--text-color, #fff);
+  border-radius: 6px;
+  background-color: var(--accent);
+  color: white;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .submit:hover {
-  background-color: var(--accent-hover, #00bfff96);
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
 }
 
-/* Signin link styling */
+
 .signin {
-  font-size: 14px;
+  font-size: 25px;
   text-align: center;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
+  width: 100%;
 }
 
 .signin a {
-  color: var(--accent, #00bfff);
+  color: var(--accent);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .signin a:hover {
   text-decoration: underline;
+  color: var(--accent-hover);
 }
 
-/* Responsive adjustments */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .form {
-    padding: 20px;
+    flex-direction: column;
+    gap: 15px;
   }
+
   .flex {
     flex-direction: column;
   }
-}
 
-/* Pulse animation for title decoration */
-@keyframes pulse {
-  0% {
-    transform: scale(0.9);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.8);
-    opacity: 0;
+  .submit {
+    padding: 12px;
   }
 }

@@ -16,7 +16,6 @@
   margin-bottom: 20px;
 }
 
-/* Input Fields Styling */
 .input-field {
   width: 100%;
   padding: 12px;
@@ -40,16 +39,14 @@ textarea.input-field {
   height: 100px;
 }
 
-/* Labels Styling */
-.input-label {
+.service-label{
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 10px;
   display: block;
-  color: #BDC3C7;
+  color: #d35400;
 }
 
-/* Schedule Row Styling */
 .schedule-row {
   display: flex;
   gap: 10px;
@@ -61,7 +58,6 @@ textarea.input-field {
   margin-bottom: 30px;
 }
 
-/* Button Styling */
 button {
   font-size: 1rem;
   font-weight: 600;
@@ -103,7 +99,12 @@ button {
   background-color: #27AE60;
 }
 
-/* Responsive Design */
+
+.message-services{
+  color: #27AE60;
+  font-weight: bold;
+}
+
 @media screen and (max-width: 600px) {
   .create-service-container {
     width: 90%;
