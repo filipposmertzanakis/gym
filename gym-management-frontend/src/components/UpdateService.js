@@ -16,7 +16,7 @@ const UpdateService = () => {
         const data = await getServices();
         setServices(data);
       } catch (error) {
-        setMessage(`Error fetching services: ${error.message || 'Unknown error'}`);
+        setMessage(`Could not get the services at the moment. Please retry`);
       }
     };
 
@@ -47,7 +47,7 @@ const UpdateService = () => {
       setDescription('');
       setPrice(0);
     } catch (error) {
-      setMessage(`Error updating service: ${error.message || 'Unknown error'}`);
+      setMessage(`Could not update service at the moment. Please retry`);
     }
   };
 

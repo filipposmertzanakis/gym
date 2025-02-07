@@ -37,7 +37,7 @@ const ManageServices = () => {
       const updatedServices = await getServices();
       setServices(updatedServices);
     } catch (error) {
-      setMessage(error.response?.data?.message || 'Error creating service');
+      setMessage(error.response?.data?.message || 'Could not create service. Please retry');
     }
   };
 
@@ -61,7 +61,7 @@ const ManageServices = () => {
       const updatedServices = await getServices();
       setServices(updatedServices);
     } catch (error) {
-      setMessage(error.response?.data?.message || 'Error updating service');
+      setMessage(error.response?.data?.message || 'Could not update service at the moment. Please retry ');
     }
   };
 
@@ -72,7 +72,7 @@ const ManageServices = () => {
       const updatedServices = await getServices();
       setServices(updatedServices);
     } catch (error) {
-      setMessage(error.message || 'Error deleting service');
+      setMessage(error.message || 'Could not delete service at the moment. Please retry');
     }
   };
 

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/login.css';
 
 const Login = () => {
+  const [message, setMessage] = useState('');
   const [credentials, setCredentials] = useState({
     username: '',
     password: '',
@@ -26,10 +27,12 @@ const Login = () => {
         navigate('/'); // Redirect to the home page after logging in
       } else {
         console.error('User is not active:', user.status);
+        setMessage(`Your credentials are wrong or dont exist. Please retry`);
         // Optionally, display a message to the user.
       }
     } catch (error) {
       console.error('Login error:', error);
+      
     }
   };
 

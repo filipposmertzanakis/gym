@@ -38,7 +38,7 @@ const Booking = () => {
       // Optionally reset the form or redirect the user
     } catch (error) {
       console.error('Error details:', error); // Log the full error for debugging
-      setMessage(`Error creating booking: ${error.response?.data?.error || error.message}`);
+      setMessage(`We couldnt complete the booking at this moment. Please retry`);
     }
   };
 

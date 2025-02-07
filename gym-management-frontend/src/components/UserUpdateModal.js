@@ -63,7 +63,7 @@ const UserUpdateModal = ({ user, onClose, onSave }) => {
       }
     } catch (error) {
       setMessage(
-        `Error updating user ${user.username}: ${error.message || 'Unknown error'}`
+        `Could not update user info at the momment please retry`
       );
     }
   };

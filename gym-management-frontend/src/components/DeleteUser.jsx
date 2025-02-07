@@ -34,7 +34,7 @@ const DeleteUser = () => {
       setUsers(users.filter((user) => user.username !== username));
       handleCloseDeleteModal();
     } catch (error) {
-      setMessage(`Error deleting user: ${error.message || 'Unknown error'}`);
+      setMessage(`Could not delete this user at the moment. Please retry`);
     }
   };
 

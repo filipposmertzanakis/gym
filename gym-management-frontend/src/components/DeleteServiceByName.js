@@ -33,7 +33,7 @@ const DeleteServiceByName = () => {
       const updatedServices = services.filter(service => service.name !== name);
       setServices(updatedServices);
     } catch (error) {
-      setMessage(error.message || 'Error deleting service');
+      setMessage(error.message || 'Could not delete asked service at the moment.Please retry');
     }
   };
 

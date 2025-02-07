@@ -42,7 +42,7 @@ const UpdateUser = () => {
       setMessage(`User ${username} updated successfully`);
       setEditingUser(null);
     } catch (error) {
-      setMessage(`Error updating user ${username}: ${error.message || 'Unknown error'}`);
+      setMessage(`Could not change user information. Please retry`);
     }
   };
 
@@ -53,7 +53,7 @@ const UpdateUser = () => {
       setUsers(users.filter(user => user.username !== username));
       setMessage(`User ${username} deleted successfully`);
     } catch (error) {
-      setMessage(`Error deleting user ${username}: ${error.message || 'Unknown error'}`);
+      setMessage(`Could not delete asked user. Please retry`);
     }
   };
 
