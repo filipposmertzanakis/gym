@@ -66,18 +66,26 @@ const Services = () => {
             {service.trainer?.name && (
               <p className="gymnast-info">Gymnast: {service.trainer.name}</p>
             )}
-            {user && user.status === 'active' && (
-              <>
-                {user.cancellationCounter < 2 ? (
-                  <button>
-                    <Link to="/services/Booking" state={{ service }}>
-                      Book
-                    </Link>
-                  </button>
-                ) : (
-                  bannedMessage
-                )}
-              </>
+            {user ? (
+              user.status === 'active' ? (
+                <>
+                  {user.cancellationCounter < 2 ? (
+                    <button>
+                      <Link to="/services/Booking" state={{ service }}>
+                        Book
+                      </Link>
+                    </button>
+                  ) : (
+                    bannedMessage
+                  )}
+                </>
+              ) : null
+            ) : (
+              <button>
+                <Link to="/login">
+                  Login to book
+                </Link>
+              </button>
             )}
           </li>
         ))}

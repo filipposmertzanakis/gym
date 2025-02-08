@@ -111,9 +111,11 @@ function App() {
               Profile
             </Link>
           )}
+          {user && user.status === 'active' && (
           <Link to="/News" className="nav-link" onClick={toggleMenu}>
             News
           </Link>
+          )}
         </nav>
       </div>
 
