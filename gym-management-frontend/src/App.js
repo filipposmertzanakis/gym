@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes, Link, useNavigate } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
 import Services from './components/Services';
@@ -52,76 +52,90 @@ function HomePage() {
 
 // Main App Component
 function App() {
-  const { user } = useUser(); // Access the user context
+  const { user, logout } = useUser(); // Access the user context and logout function
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State for menu toggle
+  const navigate = useNavigate(); // Hook to programmatically navigate
 
   // Toggle menu function
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
-  return (
-    <Router>
-      <div>
-        {/* Navbar */}
-        <div className={`navbar ${isMenuOpen ? 'nav-open' : ''}`}>
-          <div className="navbar-brand">
-            <Link to="/" className='logo'>DS_Gym</Link>
-            <button
-              className="menu-toggle"
-              onClick={toggleMenu}
-              aria-label="Toggle navigation"
-            >
-              ☰
-            </button>
-          </div>
-          <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-            
-            <Link to="/register" className="nav-link" onClick={toggleMenu}>
-              Register
-            </Link>
-            <Link to="/login" className="nav-link" onClick={toggleMenu}>
-              Login
-            </Link>
-            <Link to="/services" className="nav-link" onClick={toggleMenu}>
-              Services
-            </Link>
-            {user && user.role === 'admin' && (
-              <Link to="/AdminPage" className="nav-link" onClick={toggleMenu}>
-                Admin page
-              </Link>
-            )}
-            {user && user.status === 'active' && (
-              <Link to="/Profile" className="nav-link" onClick={toggleMenu}>
-                Profile
-              </Link>
-            )}
-            <Link to="/News" className="nav-link" onClick={toggleMenu}>
-              News
-            </Link>
-          </nav>
-        </div>
+  // Handle logout and redirect to home
+  const handleLogout = () => {
+    logout();
+    toggleMenu();
+    navigate('/'); // Redirect to home page
+  };
 
-        {/* Routes */}
-        <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/AdminPage" element={<AdminPage />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/News" element={<News />} />
-          <Route path="/News/:articleId" element={<ArticlePage />} />
-          <Route path="/services/Booking" element={<Booking />} />
-          <Route path="/AdminPage/DeleteUser" element={<DeleteUser />} />
-          <Route path="/AdminPage/CreateService" element={<CreateService />} />
-          <Route path="/AdminPage/updateUser" element={<UpdateUser />} />
-          <Route path="/AdminPage/Register_Requests" element={<Register_Requests />} />
-          <Route path="/AdminPage/DeleteServiceByName" element={<DeleteServiceByName />} />
-          <Route path="/Profile" element={<Profile />} />
-          <Route path="/" element={<HomePage />} />
-          <Route path="/AdminPage/ManageServices" element={<ManageServices />} />
-        </Routes>
+  return (
+    <div>
+      {/* Navbar */}
+      <div className={`navbar ${isMenuOpen ? 'nav-open' : ''}`}>
+        <div className="navbar-brand">
+          <Link to="/" className='logo'>DS_Gym</Link>
+          <button
+            className="menu-toggle"
+            onClick={toggleMenu}
+            aria-label="Toggle navigation"
+          >
+            ☰
+          </button>
+        </div>
+        <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+          {!user && (
+            <>
+              <Link to="/register" className="nav-link" onClick={toggleMenu}>
+                Register
+              </Link>
+              <Link to="/login" className="nav-link" onClick={toggleMenu}>
+                Login
+              </Link>
+            </>
+          )}
+          {user && (
+            <button className="nav-link" onClick={handleLogout}>
+              Logout
+            </button>
+          )}
+          <Link to="/services" className="nav-link" onClick={toggleMenu}>
+            Services
+          </Link>
+          {user && user.role === 'admin' && (
+            <Link to="/AdminPage" className="nav-link" onClick={toggleMenu}>
+              Admin page
+            </Link>
+          )}
+          {user && user.status === 'active' && (
+            <Link to="/Profile" className="nav-link" onClick={toggleMenu}>
+              Profile
+            </Link>
+          )}
+          <Link to="/News" className="nav-link" onClick={toggleMenu}>
+            News
+          </Link>
+        </nav>
       </div>
-    </Router>
+
+      {/* Routes */}
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/AdminPage" element={<AdminPage />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/News" element={<News />} />
+        <Route path="/News/:articleId" element={<ArticlePage />} />
+        <Route path="/services/Booking" element={<Booking />} />
+        <Route path="/AdminPage/DeleteUser" element={<DeleteUser />} />
+        <Route path="/AdminPage/CreateService" element={<CreateService />} />
+        <Route path="/AdminPage/updateUser" element={<UpdateUser />} />
+        <Route path="/AdminPage/Register_Requests" element={<Register_Requests />} />
+        <Route path="/AdminPage/DeleteServiceByName" element={<DeleteServiceByName />} />
+        <Route path="/Profile" element={<Profile />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/AdminPage/ManageServices" element={<ManageServices />} />
+      </Routes>
+    </div>
   );
 }
 
