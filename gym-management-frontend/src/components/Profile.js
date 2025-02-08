@@ -84,7 +84,7 @@ const Profile = () => {
                 {pendingBookings.map((booking) => (
                   <li key={booking._id}>
                     <p>
-                      <strong>Service:</strong> {booking.serviceId?.name}
+                    <strong>Service:</strong> {booking.serviceId?.name || 'Unknown Service'}
                     </p>
                     <p>
                       <strong>Date:</strong> {new Date(booking.date).toLocaleDateString()}
@@ -109,7 +109,7 @@ const Profile = () => {
                 {pastBookings.map((booking) => (
                   <li key={booking._id}>
                     <p>
-                      <strong>Service:</strong> {booking.serviceId.name}
+                    <strong>Service:</strong> {booking.serviceId?.name || 'Unknown Service'}
                     </p>
                     <p>
                       <strong>Date:</strong> {new Date(booking.date).toLocaleDateString()}
