@@ -1,14 +1,13 @@
 .delete-service-container {
   padding: 20px;
   color: #FDFEFE;
-  font-family: Arial, sans-serif;
   width: 60%;
   margin: 0px auto;
   text-align: center;
 }
 
 h3 {
-  color: #d35400;
+  color: var(--accent);
   margin-bottom: 20px;
   font-size: 1.8rem;
 }
@@ -24,7 +23,7 @@ h3 {
   border-collapse: collapse;
   margin: 20px auto;
   background-color: #fce9d5;
-  border: 1px solid white;
+  
   border-radius: 10px;
   overflow: hidden;
 }
@@ -33,17 +32,18 @@ h3 {
 .services-table td {
   padding: 15px;
   text-align: center;
-  border-bottom: 1px solid #d35400;
+  border-bottom: 1px solid var(--accent);
 }
 
 .services-table th {
-  background-color: #d35400;
+  background-color: var(--accent);
   color: #FFFFFF;
   font-weight: bold;
 }
 
 .services-table td {
-  color: black;
+  color: var(--text-color);
+  font-weight: bold;
 }
 
 .services-table tr:hover {
@@ -54,7 +54,7 @@ h3 {
   padding: 8px 14px;
   font-size: 1rem;
   color: #FFFFFF;
-  background-color: #FF5722;
+  background-color: #af1a1a;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -62,7 +62,7 @@ h3 {
 }
 
 .delete-button:hover {
-  background-color: #E64A19;
+  background-color: #e53c3c;
   transform: scale(1.05);
 }
 

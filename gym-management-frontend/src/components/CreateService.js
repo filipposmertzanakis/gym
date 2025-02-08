@@ -11,7 +11,6 @@ const CreateService = () => {
   const [message, setMessage] = useState('');
   const [gymnasts, setGymnasts] = useState([]);
 
-  // Fetch users and filter for gymnasts
   useEffect(() => {
     const fetchGymnasts = async () => {
       try {
@@ -63,6 +62,7 @@ const CreateService = () => {
     <div className="create-service-container">
       <h2>Create New Service</h2>
       <form onSubmit={handleSubmit}>
+      <label className='service-label'>Name:</label>
         <input
           type="text"
           className="input-field"
@@ -71,13 +71,14 @@ const CreateService = () => {
           onChange={(e) => setName(e.target.value)}
           required
         />
+        <label className='service-label'>Description:</label>
         <textarea
           className="input-field"
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <label className="form-label">Assign Trainer (Gymnast):</label>
+        <label className='service-label'>Assign Trainer (Gymnast):</label>
         <select
           className="input-field"
           value={trainer}
@@ -93,6 +94,7 @@ const CreateService = () => {
         </select>
         {schedule.map((session, index) => (
           <div key={index} className="schedule-item">
+            <label className='service-label'>Day:</label>
             <input
               type="date"
               className="input-field"
@@ -102,6 +104,7 @@ const CreateService = () => {
               onChange={(e) => handleChangeSchedule(index, e)}
               required
             />
+            <label className='service-label'>Time:</label>
             <input
               type="time"
               className="input-field"
@@ -111,6 +114,7 @@ const CreateService = () => {
               onChange={(e) => handleChangeSchedule(index, e)}
               required
             />
+            <label className='service-label'>Max Capacity:</label>
             <input
               type="number"
               className="input-field"
@@ -132,6 +136,7 @@ const CreateService = () => {
         <button type="button" className="add-schedule-button" onClick={handleAddSchedule}>
           Add Schedule
         </button>
+        <label className='service-label'>Price €:</label>
         <input
           type="number"
           className="input-field"
@@ -144,7 +149,7 @@ const CreateService = () => {
           Create Service
         </button>
       </form>
-      {message && <p className="message">{message}</p>}
+      {message && <p className="message-services">{message}</p>}
     </div>
   );
   

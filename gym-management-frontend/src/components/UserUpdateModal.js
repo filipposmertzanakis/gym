@@ -71,7 +71,7 @@ const UserUpdateModal = ({ user, onClose, onSave }) => {
   return (
     <div className="Umodal-overlay">
       <div className="Umodal-content">
-        <h2>Update User</h2>
+        <h2 className='title-Umodal '>Update User</h2>
         <form>
           <div>
             <label>Name:</label>
@@ -137,7 +137,7 @@ const UserUpdateModal = ({ user, onClose, onSave }) => {
             />
           </div>
         </form>
-        <button onClick={handleUpdate}>Save</button>
+        <button onClick={handleUpdate} className='save-button '>Save</button>
         <button onClick={onClose} className="close-button">
           Close
         </button>

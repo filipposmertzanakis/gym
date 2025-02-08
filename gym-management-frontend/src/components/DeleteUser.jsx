@@ -92,19 +92,19 @@ const DeleteUser = () => {
               <td>{user.role}</td>
               <td className="users-actions">
                 <button
-                  className="button view-button"
+                  className="view-button"
                   onClick={() => handleOpenInfoModal(user)}
                 >
                   View Info
                 </button>
                 <button
-                  className="button delete-button"
+                  className="delete-button1"
                   onClick={() => handleOpenDeleteModal(user)}
                 >
                   Delete
                 </button>
                 <button
-                  className="button update-button"
+                  className="update-button"
                   onClick={() => handleOpenUpdateModal(user)}
                 >
                   Update

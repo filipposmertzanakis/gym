@@ -78,7 +78,7 @@ const Register = () => {
       <div className="register-form">
         <form className="form" onSubmit={handleSubmit}>
           <p className="title">Register</p>
-          <p className="message">Signup now and get full access to our gym.</p>
+          <p className="Signup-message">Signup now and get full access to our gym.</p>
 
           <div className="flex">
             <label>
@@ -205,7 +205,7 @@ const Register = () => {
             Request for Register!
           </button>
           <p className="signin">
-            Already have an account? <a href="#">Signin</a>
+            Already have an account? <a href="login">Signin</a>
           </p>
         </form>
       </div>

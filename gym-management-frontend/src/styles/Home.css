@@ -1,13 +1,3 @@
-/* Home Page styles for the Gym Management System */
-
-/* Define CSS variables for consistent styling */
-:root {
-  --primary-bg: #fff;
-  --accent: #ff5722;
-  --text-color: #333;
-  --hover-bg: #f0f0f0;
-  --transition: all 0.3s ease;
-}
 
 /* Optional container to wrap home page content */
 .home-container {
