@@ -53,7 +53,7 @@ const CreateNews = () => {
         author: user.username,
       };
 
-      const response = await axios.post('http://localhost:5000/api/news', dataToSend);
+      await axios.post('http://localhost:5000/api/news', dataToSend);
       setSuccessMessage('News article created successfully!');
       setFormData({
         title: '',
@@ -76,10 +76,10 @@ const CreateNews = () => {
 
   return (
     <div className="news-container">
-      {user && (user.role === 'admin' || user.role === 'gymnast') && <h2>Create News Article</h2>}
+      {user && user.role === 'admin' && <h2>Create News Article</h2>}
       {error && <div className="news-error">{error}</div>}
       {successMessage && <div className="news-success">{successMessage}</div>}
-      {user && (user.role === 'admin' || user.role === 'gymnast') && (
+      {user && user.role === 'admin' && (
         <button
           className="toggle-form-btn"
           onClick={() => setIsFormVisible(!isFormVisible)}
@@ -87,7 +87,7 @@ const CreateNews = () => {
           {isFormVisible ? 'Cancel' : 'Create News Article'}
         </button>
       )}
-      {isFormVisible && (
+      {isFormVisible && user && user.role === 'admin' && (
         <form onSubmit={handleSubmit} className="news-form">
           <div className="form-group">
             <label htmlFor="news-title">Title:</label>
