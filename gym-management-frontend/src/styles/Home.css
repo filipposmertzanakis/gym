@@ -1,72 +1,69 @@
-
-/* Optional container to wrap home page content */
+/* Main container styling */
 .home-container {
   max-width: 900px;
   margin: 40px auto;
-  padding: 20px;
-  background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), var(--primary-bg);
-  border: 1px solid rgba(0,0,0,0.1);
-  border-radius: 8px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(230, 230, 230, 0.9));
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .home-container:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* Style for the welcome heading */
+/* Heading styling */
 .home-container h2 {
   color: var(--primary-bg);
-  font-size: 2.8rem;
-  margin-bottom: 20px;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  font-size: 3rem;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Style for the introductory paragraph */
+/* Paragraph styling */
 .home-container p {
   color: var(--text-color);
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+  font-size: 1.3rem;
+  margin-bottom: 25px;
   line-height: 1.6;
 }
 
-/* Home content blocrgb(204, 29, 2)ditional features info */
+/* Features box */
 .home-content {
   position: relative;
-  border-radius: 8px;
-  padding: 40px;
+  border-radius: 10px;
+  padding: 50px 40px;
   margin-top: 20px;
-  background: rgba(255,255,255,0.9);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  text-align: left;
 }
 
-/* Decorative pseudo-elements with animation */
+/* Add images for decoration */
 .home-content::before,
 .home-content::after {
   content: '';
   position: absolute;
-  top: 10%;
+  top: 15%;
   height: 80%;
-  width: 150px;
+  width: 120px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.8;
+  opacity: 0.85;
   transition: transform 0.5s ease;
 }
 
 .home-content::before {
-  left: 500px;
+  left: -100px;
   background-image: url("../../photos/body-builder.png");
 }
 
 .home-content::after {
-  right: 500px;
+  right: -100px;
   background-image: url("../../photos/body-builder.png");
 }
 
@@ -75,37 +72,103 @@
   transform: scale(1.1);
 }
 
-/* Heading within the home-content */
+/* Features heading */
 .home-content h3 {
   color: var(--accent);
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 20px;
-  border-bottom: 2px solid var(--accent);
+  border-bottom: 3px solid var(--accent);
   display: inline-block;
   padding-bottom: 5px;
 }
 
-/* Remove default list styling for the features list */
+/* Features list */
 .home-content ul {
   list-style: none;
   padding: 0;
   margin: 20px 0;
 }
 
-/* List item styles for each feature */
+/* Feature list items */
 .home-content li {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--text-color);
   margin-bottom: 15px;
   position: relative;
-  padding-left: 25px;
+  padding-left: 30px;
 }
 
 .home-content li::before {
-  content: '✓';
-  position:relative;
+  content: '✔';
+  position: absolute;
   left: 0;
-  top: 0;
+  top: 2px;
   color: var(--accent);
+  font-size: 1.4rem;
   font-weight: bold;
+}
+
+/* Get Started Button */
+button {
+  background-color: var(--accent);
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: var(--primary-bg);
+  transform: scale(1.05);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 20px;
+  }
+
+  .home-container h2 {
+    font-size: 2.5rem;
+  }
+
+  .home-content {
+    padding: 40px;
+  }
+
+  .home-content::before,
+  .home-content::after {
+    width: 80px;
+    left: -70px;
+    right: -70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 15px;
+  }
+
+  .home-container h2 {
+    font-size: 2rem;
+  }
+
+  .home-content {
+    padding: 30px;
+  }
+
+  .home-content::before,
+  .home-content::after {
+    width: 60px;
+    left: -50px;
+    right: -50px;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
 }
