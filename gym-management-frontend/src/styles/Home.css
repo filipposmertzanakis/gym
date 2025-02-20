@@ -1,4 +1,4 @@
-/* Main container styling */
+
 .home-container {
   max-width: 900px;
   margin: 40px auto;
@@ -8,6 +8,8 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; 
+  overflow: hidden; 
 }
 
 .home-container:hover {
@@ -15,135 +17,153 @@
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* Heading styling */
+
 .home-container h2 {
   color: var(--primary-bg);
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 15px;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Paragraph styling */
+
 .home-container p {
   color: var(--text-color);
-  font-size: 1.3rem;
-  margin-bottom: 25px;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
   line-height: 1.6;
 }
 
-/* Features box */
+
 .home-content {
-  position: relative;
   border-radius: 10px;
-  padding: 50px 40px;
+  padding: 30px;
   margin-top: 20px;
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative; 
 }
 
-/* Add images for decoration */
+
 .home-content::before,
 .home-content::after {
   content: '';
   position: absolute;
-  top: 15%;
-  height: 80%;
-  width: 120px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100px;
+  width: 100px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.85;
+  opacity: 0.8;
   transition: transform 0.5s ease;
 }
 
+
 .home-content::before {
-  left: -100px;
+  left: 10%;
   background-image: url("../../photos/body-builder.png");
 }
 
+
 .home-content::after {
-  right: -100px;
+  right: 10%;
   background-image: url("../../photos/body-builder.png");
 }
+
 
 .home-content:hover::before,
 .home-content:hover::after {
-  transform: scale(1.1);
+  transform: translateY(-50%) scale(1.1);
 }
 
-/* Features heading */
+
 .home-content h3 {
   color: var(--accent);
-  font-size: 2.2rem;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  margin-bottom: 15px;
   border-bottom: 3px solid var(--accent);
   display: inline-block;
   padding-bottom: 5px;
 }
 
-/* Features list */
+
 .home-content ul {
   list-style: none;
   padding: 0;
   margin: 20px 0;
+  text-align: center;
 }
 
-/* Feature list items */
+
 .home-content li {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--text-color);
-  margin-bottom: 15px;
-  position: relative;
-  padding-left: 30px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .home-content li::before {
   content: '✔';
-  position: absolute;
-  left: 0;
-  top: 2px;
   color: var(--accent);
   font-size: 1.4rem;
   font-weight: bold;
 }
 
-/* Get Started Button */
-button {
-  background-color: var(--accent);
-  color: white;
-  font-size: 1.2rem;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 6px;
+.lo{
+  background-color: #ff5722; 
+  border: none; 
+  border-radius: 5px;                 
+  padding: 10px 20px;            
+  font-size: 1rem;
+  color: rgb(0, 0, 0);                  
+  text-decoration: none;         
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
-  background-color: var(--primary-bg);
-  transform: scale(1.05);
+.lo:hover,
+.lo:focus{
+  background-color: rgba(0, 0, 0, 0.05); 
+  outline:none;       
+  transform: scale(1.02);
+  color:#000000;           
 }
 
-/* Responsive Styles */
+
+
+
+
 @media (max-width: 768px) {
   .home-container {
     padding: 20px;
   }
 
   .home-container h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .home-content {
-    padding: 40px;
+    padding: 20px;
   }
+
 
   .home-content::before,
   .home-content::after {
     width: 80px;
-    left: -70px;
-    right: -70px;
+    height: 80px;
+    top: 40%;
+  }
+
+  .home-content h3 {
+    font-size: 1.8rem;
   }
 }
 
@@ -153,18 +173,23 @@ button:hover {
   }
 
   .home-container h2 {
-    font-size: 2rem;
-  }
-
-  .home-content {
-    padding: 30px;
+    font-size: 1.8rem;
   }
 
   .home-content::before,
   .home-content::after {
     width: 60px;
-    left: -50px;
-    right: -50px;
+    height: 60px;
+    left: 5%;
+    right: 5%;
+  }
+
+  .home-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .home-content li {
+    font-size: 1rem;
   }
 
   button {

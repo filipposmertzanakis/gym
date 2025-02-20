@@ -44,7 +44,7 @@ function HomePage() {
           <li>Manage memberships</li>
           <li>Access premium services</li>
         </ul>
-        <button>Get Started</button>
+        <Link to="/register" className='lo'>Register</Link>
       </div>
     </div>
   );
@@ -91,6 +91,9 @@ function App() {
               <Link to="/login" className="nav-link" onClick={toggleMenu}>
                 Login
               </Link>
+              <Link to="/News" className="nav-link" onClick={toggleMenu}>
+            News
+          </Link>
             </>
           )}
           {user && (
