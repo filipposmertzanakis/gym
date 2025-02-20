@@ -26,7 +26,7 @@ function HomePage() {
   const { user } = useUser(); // Get the user data from context
 
   return (
-    <div>
+    <div className='home-container'>
       <h2>
         {user ? (
           <>
