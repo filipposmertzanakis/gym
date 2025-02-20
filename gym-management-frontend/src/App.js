@@ -94,7 +94,7 @@ function App() {
             </>
           )}
           {user && (
-            <button className="nav-link" onClick={handleLogout}>
+            <button className="logout" onClick={handleLogout}>
               Logout
             </button>
           )}
