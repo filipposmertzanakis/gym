@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { createBooking } from '../apiService'; // Import the createBooking function
+import { createBooking } from '../apiService';
 import { useUser } from '../context/UserContext';
+import '../styles/Booking.css'; // Import CSS file
 
 const Booking = () => {
   const location = useLocation();
   const { service } = location.state || {};
-  const { user } = useUser(); // Access the user context
+  const { user } = useUser();
 
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
   const [message, setMessage] = useState('');
 
   useEffect(() => {
     if (service && service.schedule.length > 0) {
-      // Set the date and time based on the first available schedule
-      const firstSession = service.schedule[0];
-      setDate(firstSession.day); // Assuming day is in a valid date format
-      setTime(firstSession.time);
+      setMessage('');
     }
   }, [service]);
 
@@ -30,40 +26,39 @@ const Booking = () => {
       time: session.time,
     };
 
-    console.log('Booking Data:', bookingData); // Log the booking data
-
     try {
       await createBooking(bookingData);
       setMessage('Booking created successfully!');
-      // Optionally reset the form or redirect the user
     } catch (error) {
-      console.error('Error details:', error); // Log the full error for debugging
-      setMessage(`We couldnt complete the booking at this moment. Please retry`);
+      setMessage('We couldn’t complete the booking at this moment. Please retry.');
     }
   };
 
   return (
-    <div>
+    <div className="booking-container">
       {service ? (
         <div>
-          <h2>Booking for: {service.name}</h2>
-          <p>Description: {service.description}</p>
-          <p>Price: ${service.price}</p>
-          <h3>Schedule:</h3>
-          <ul>
+          <h2 className="booking-title">Booking for: {service.name}</h2>
+          <p className="booking-description">{service.description}</p>
+          <p className="booking-price">Price: €{service.price}</p>
+          
+          <h3 className="schedule-heading">Available Sessions:</h3>
+          <ul className="schedule-list">
             {service.schedule.map((session, index) => (
-              <li key={index}>
+              <li key={index} className="schedule-item">
                 {session.day} at {session.time} with {session.trainer} (Max Capacity: {session.maxCapacity})
-                <form onSubmit={(e) => handleBooking(e, session)}>
-                  <button type="submit">Confirm Booking</button>
+                
+                <form onSubmit={(e) => handleBooking(e, session)} className="booking-form">
+                  <button type="submit" className="confirm-button">Confirm Booking</button>
                 </form>
               </li>
             ))}
           </ul>
-          {message && <p>{message}</p>}
+
+          {message && <p className="booking-message">{message}</p>}
         </div>
       ) : (
-        <p>No service selected.</p>
+        <p className="no-service-message">No service selected.</p>
       )}
     </div>
   );

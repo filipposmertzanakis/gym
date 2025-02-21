@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getServices, updateService, deleteServiceByName, getUsers } from '../apiService';
 import '../styles/manage_services.css';
+
 const ManageServices = () => {
   const [services, setServices] = useState([]);
   const [serviceName, setServiceName] = useState('');
@@ -97,29 +98,35 @@ const ManageServices = () => {
   };
 
   return (
-    <div>
-      <h2>Manage Services</h2>
-      {message && <p>{message}</p>}
+    <div className="services-manager-container">
+      <h2 className="services-manager-title">Manage Services</h2>
+      {message && <p className="services-manager-message">{message}</p>}
 
       {/* Show Form Only When Editing a Service */}
       {isFormVisible && (
-        <form onSubmit={handleUpdate}>
-          <h3>Editing: {editingService}</h3>
+        <form className="services-manager-form"  onSubmit={handleUpdate}>
+          <h3 className="services-manager-subtitle">Editing: {editingService}</h3>
+          <label className="services-manager-label">Service Name</label>
           <input
             type="text"
+            className="services-manager-input"
             placeholder="Service Name"
             value={serviceName}
             onChange={(e) => setServiceName(e.target.value)}
             required
             disabled
           />
+          <label className="services-manager-label">Description</label>
           <textarea
+            className="services-manager-input"
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+          <label className="services-manager-label">Price</label>
           <input
             type="number"
+            className="services-manager-input"
             placeholder="Price"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
@@ -127,8 +134,8 @@ const ManageServices = () => {
           />
 
           {/* Trainer Selection */}
-          <label>Select Trainer (Gymnast):</label>
-          <select value={trainer} onChange={(e) => setTrainer(e.target.value)} required>
+          <label className="services-manager-label">Select Trainer (Gymnast)</label>
+          <select className="services-manager-input" value={trainer} onChange={(e) => setTrainer(e.target.value)} required>
             <option value="">Select Gymnast</option>
             {gymnasts.map((gymnast) => (
               <option key={gymnast._id} value={gymnast._id}>
@@ -138,12 +145,13 @@ const ManageServices = () => {
           </select>
 
           {/* Schedules Section */}
-          <h4>Schedules</h4>
+          <h4 className="services-manager-subtitle">Schedules</h4>
           {schedules.map((session, index) => (
-            <div key={index}>
+            <div className="services-manager-schedule-item" key={index}>
               <input
-                type="text"
+                type="date"
                 name="day"
+                className="services-manager-input"
                 placeholder="Day"
                 value={session.day}
                 onChange={(e) => handleChangeSchedule(index, e)}
@@ -152,47 +160,44 @@ const ManageServices = () => {
               <input
                 type="time"
                 name="time"
+                className="services-manager-input"
                 placeholder="Time"
                 value={session.time}
                 onChange={(e) => handleChangeSchedule(index, e)}
                 required
               />
-              
               <input
                 type="number"
                 name="maxCapacity"
+                className="services-manager-input"
                 placeholder="Max Capacity"
                 value={session.maxCapacity}
                 onChange={(e) => handleChangeSchedule(index, e)}
                 required
               />
-              <button type="button" onClick={() => handleRemoveSchedule(index)}>Remove</button>
+              <button className="services-remove-button" type="button" onClick={() => handleRemoveSchedule(index)}>Remove</button>
             </div>
           ))}
-          <button type="button" onClick={handleAddSchedule}>Add Schedule</button>
+          <button className="services-add-button" type="button" onClick={handleAddSchedule}>Add Schedule</button>
 
-          <button type="submit">Update Service</button>
-          <button type="button" onClick={() => setIsFormVisible(false)}>Cancel</button>
+          <button className="services-manager-submit" type="submit">Update Service</button>
+          <button className="services-manager-cancel" type="button" onClick={() => setIsFormVisible(false)}>Cancel</button>
         </form>
       )}
 
       {/* List of Services */}
-      <h3>Available Services</h3>
-      <ul>
+      <h3 className="services-manager-subtitle">Available Services</h3>
+      <ul className="services-manager-list">
         {services.map(service => (
-          <li key={service._id}>
-            {service.name} - {service.description} - ${service.price}
-            <br />
-            <strong>Trainer:</strong> {gymnasts.find(g => g._id === service.trainer)?.name || 'Not Assigned'}
-            <ul>
-              {service.schedule.map((session, index) => (
-                <li key={index}>
-                  {session.day} at {session.time} with {session.trainer} (Max Capacity: {session.maxCapacity})
-                </li>
-              ))}
-            </ul>
-            <button onClick={() => handleEdit(service)}>Edit</button>
-            <button onClick={() => handleDelete(service.name)}>Delete</button>
+          <li className="services-manager-item" key={service._id}>
+            <div className="services-manager-details">
+              <span className="services-manager-name">{service.name}</span>
+              
+            </div>
+            <div>
+              <button className="services-manager-edit" onClick={() => handleEdit(service)}>Edit</button>
+              
+            </div>
           </li>
         ))}
       </ul>

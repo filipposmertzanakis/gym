@@ -1,140 +1,200 @@
-/* General Styles */
-.manage-services-container {
-  max-width: 900px;
-  margin: 20px auto;
+/* Main container */
+.services-manager-container {
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
-  background: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Heading */
-.manage-services-container h2 {
+/* Titles */
+.services-manager-title, .services-manager-subtitle {
   text-align: center;
   color: #333;
-}
-
-/* Form Styles */
-form {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  margin-top: 15px;
-}
-
-label {
+  font-size: 22px;
   font-weight: bold;
-  display: block;
-  margin: 10px 0 5px;
+  margin-bottom: 15px;
+}
+
+/* Success/Error Message */
+.services-manager-message {
+  text-align: center;
+  color: #28a745;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Form Styling */
+.services-manager-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.services-manager-label {
+  font-weight: bold;
+  font-size: 14px;
   color: #555;
 }
 
-input, textarea, select {
-  width: 100%;
+.services-manager-input {
   padding: 8px;
-  margin-bottom: 10px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  border-radius: 5px;
   font-size: 14px;
 }
 
-/* Schedule Inputs */
-.schedule-item {
-  background: #eef2f3;
-  padding: 10px;
-  margin-top: 10px;
-  border-left: 4px solid #007bff;
-  border-radius: 5px;
+textarea.services-manager-input {
+  min-height: 80px;
+  resize: vertical;
 }
 
 /* Buttons */
-button {
-  background: #007bff;
-  color: white;
+.services-manager-submit, 
+.services-manager-cancel, 
+.services-manager-edit, 
+.services-manager-delete {
+  padding: 8px 12px;
   border: none;
-  padding: 10px 15px;
+  border-radius: 6px;
   font-size: 14px;
+  font-weight: bold;
   cursor: pointer;
-  border-radius: 5px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
-button:hover {
+.services-manager-submit {
+  background: #28a745;
+  color: white;
+}
+
+.services-manager-cancel {
+  background: #dc3545;
+  color: white;
+}
+
+.services-manager-edit {
+  background: #007bff;
+  color: white;
+  margin-right: 20px;
+}
+
+.services-manager-delete {
+  background: #ff4d4d;
+  color: white;
+}
+
+.services-manager-submit:hover {
+  background: #218838;
+}
+
+.services-manager-cancel:hover {
+  background: #c82333;
+}
+
+.services-manager-edit:hover {
   background: #0056b3;
 }
 
-/* Secondary Buttons */
-.remove-button {
-  background: #dc3545;
-}
-
-.remove-button:hover {
-  background: #a71d2a;
-}
-
-.add-schedule-button {
-  background: #28a745;
-}
-
-.add-schedule-button:hover {
-  background: #1d7432;
+.services-manager-delete:hover {
+  background: #e63939;
 }
 
 /* Service List */
-.service-list {
+.services-manager-list {
   list-style: none;
   padding: 0;
-}
-
-.service-list li {
-  background: white;
-  padding: 15px;
-  border-radius: 5px;
-  margin: 10px 0;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   display: flex;
+  align-items: center;
   flex-direction: column;
+  gap: 8px;
 }
 
-/* Message */
-.message-services {
-  color: green;
+/* Individual Service Item */
+.services-manager-item {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.services-manager-item:hover {
+  background: #f0f0f0;
+}
+
+.services-manager-details {
+  flex: 1;
+}
+
+.services-manager-name {
   font-weight: bold;
-  text-align: center;
+  color: #222;
+}
+
+.services-manager-description {
+  font-size: 12px;
+  color: #666;
+}
+
+.services-manager-price {
+  font-size: 14px;
+  font-weight: bold;
+  color: #28a745;
+}
+
+/* Schedule Section */
+.services-manager-schedule-title {
+  font-size: 16px;
+  font-weight: bold;
   margin-top: 10px;
+  color: #444;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .manage-services-container {
-      width: 90%;
-      padding: 15px;
-  }
-
-  input, textarea, select {
-      font-size: 12px;
-  }
-
-  button {
-      font-size: 12px;
-      padding: 8px 10px;
-  }
+.services-manager-schedule-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
-@media (max-width: 480px) {
-  .manage-services-container {
-      width: 100%;
-      padding: 10px;
+.services-manager-schedule-item .services-manager-input {
+  flex: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .services-manager-container {
+    padding: 10px;
+    margin-top: 50px;
+    width: 90%;
   }
 
-  button {
-      width: 100%;
-      margin-top: 5px;
+  .services-manager-form {
+    padding: 10px;
   }
 
-  .service-list li {
-      padding: 10px;
+  .services-manager-input {
+    width: 100%;
+  }
+
+  .services-manager-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .services-manager-schedule-item {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
