@@ -78,7 +78,7 @@
 
 .home-content:hover::before,
 .home-content:hover::after {
-  transform: translateY(-50%) scale(1.1);
+  transform: translateY(-50%) scale(3.1);
 }
 
 

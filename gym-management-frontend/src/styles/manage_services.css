@@ -1,0 +1,140 @@
+/* General Styles */
+.manage-services-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Heading */
+.manage-services-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+/* Form Styles */
+form {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin: 10px 0 5px;
+  color: #555;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Schedule Inputs */
+.schedule-item {
+  background: #eef2f3;
+  padding: 10px;
+  margin-top: 10px;
+  border-left: 4px solid #007bff;
+  border-radius: 5px;
+}
+
+/* Buttons */
+button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+/* Secondary Buttons */
+.remove-button {
+  background: #dc3545;
+}
+
+.remove-button:hover {
+  background: #a71d2a;
+}
+
+.add-schedule-button {
+  background: #28a745;
+}
+
+.add-schedule-button:hover {
+  background: #1d7432;
+}
+
+/* Service List */
+.service-list {
+  list-style: none;
+  padding: 0;
+}
+
+.service-list li {
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 10px 0;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Message */
+.message-services {
+  color: green;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .manage-services-container {
+      width: 90%;
+      padding: 15px;
+  }
+
+  input, textarea, select {
+      font-size: 12px;
+  }
+
+  button {
+      font-size: 12px;
+      padding: 8px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .manage-services-container {
+      width: 100%;
+      padding: 10px;
+  }
+
+  button {
+      width: 100%;
+      margin-top: 5px;
+  }
+
+  .service-list li {
+      padding: 10px;
+  }
+}

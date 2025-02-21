@@ -76,10 +76,10 @@ const CreateNews = () => {
 
   return (
     <div className="news-container">
-      {user && user.role === 'admin' && <h2>Create News Article</h2>}
+      {user &&(user.role === 'admin' ||user.role === 'gymnast' )&& <h2>Create News Article</h2>}
       {error && <div className="news-error">{error}</div>}
       {successMessage && <div className="news-success">{successMessage}</div>}
-      {user && user.role === 'admin' && (
+      {user && (user.role === 'admin' ||user.role === 'gymnast' )&& (
         <button
           className="toggle-form-btn"
           onClick={() => setIsFormVisible(!isFormVisible)}
@@ -87,7 +87,7 @@ const CreateNews = () => {
           {isFormVisible ? 'Cancel' : 'Create News Article'}
         </button>
       )}
-      {isFormVisible && user && user.role === 'admin' && (
+      {isFormVisible && user && (user.role === 'admin' ||user.role === 'gymnast' )&& (
         <form onSubmit={handleSubmit} className="news-form">
           <div className="form-group">
             <label htmlFor="news-title">Title:</label>
