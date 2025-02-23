@@ -96,6 +96,10 @@
   transform: scale(1.03);
 }
 
+.error-message{
+  color: #FFFFFF;
+}
+
 
 @media (max-width: 768px) {
   .form-login {

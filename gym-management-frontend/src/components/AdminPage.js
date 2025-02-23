@@ -6,11 +6,11 @@ const AdminPage = () =>  {
       <div className="admin-page">
         <h2>Admin Dashboard</h2>
         <div className="admin-menu">
-          <Link to='DeleteUser' className='link'>Delete User</Link>
+          <Link to='DeleteUser' className='link'>Manage User</Link>
           <Link to='Register_Requests' className='link'>Register Requests</Link>
-          <Link to='CreateService' className='link'>Create_Service</Link>
-          <Link to='DeleteServiceByName' className='link'>deleteServiceByName</Link>
-          <Link to='ManageServices' className='link'>ManageServices</Link>
+          <Link to='CreateService' className='link'>Create Service</Link>
+          <Link to='DeleteServiceByName' className='link'>Delete Service</Link>
+          <Link to='ManageServices' className='link'>Manage Services</Link>
         </div>
       </div>
     );

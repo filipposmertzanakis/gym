@@ -49,7 +49,7 @@ const Login = () => {
             <label htmlFor="password" className="label">Password</label>
             <input type="password" name="password" placeholder="Password" onChange={handleChange} />
         </span>
-        <span className="span"><a href="#">Forgot password?</a></span>
+        
         {message && <p className="error-message">{message}</p>}
         <input className="submit" type="submit" defaultValue="Log in" />
         <span className="span">Don't have an account? <a href="register">Sign up</a></span>
