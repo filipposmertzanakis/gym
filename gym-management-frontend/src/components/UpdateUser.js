@@ -6,7 +6,7 @@ const UpdateUser = () => {
   const [message, setMessage] = useState('');
   const [editingUser, setEditingUser] = useState(null);
 
-  // Fetch users on component mount
+  // fere tous xristes
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -20,11 +20,11 @@ const UpdateUser = () => {
     fetchUsers();
   }, []);
 
-  // Handle input changes for individual users
+  
   const handleChange = (e, username) => {
     const { name, value } = e.target;
 
-    // Update the specific user's data in the local state
+    // enimerose ta stoixeia localy
     setUsers((prevUsers) =>
       prevUsers.map((user) =>
         user.username === username
@@ -34,7 +34,7 @@ const UpdateUser = () => {
     );
   };
 
-  // Update a specific user
+  // enimerosi stoixion enos xristi
   const handleUpdate = async (username) => {
     const userToUpdate = users.find((user) => user.username === username);
     try {
@@ -46,7 +46,7 @@ const UpdateUser = () => {
     }
   };
 
-  // Delete a specific user
+  // diegrapse enan xrisit
   const handleDelete = async (username) => {
     try {
       await deleteUser(username);

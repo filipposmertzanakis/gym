@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { createBooking } from '../apiService';
 import { useUser } from '../context/UserContext';
-import '../styles/Booking.css'; // Import CSS file
+import '../styles/Booking.css'; // pernao to css
 
 const Booking = () => {
   const location = useLocation();

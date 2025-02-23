@@ -3,7 +3,7 @@ import '../styles/ServiceModal.css'; // Optional: Add styles for the modal
 
 
 const ServiceModal = ({ service, onClose }) => {
-  if (!service) return null; // If no service is provided, return null
+  if (!service) return null; // an den parexetai kamia ypiresia epestrepse null
 
   return (
     <div className="modal-overlay">

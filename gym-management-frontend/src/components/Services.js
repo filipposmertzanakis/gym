@@ -32,14 +32,14 @@ const Services = () => {
     setSelectedService(null);
   };
 
-  // If user is banned from booking, calculate days remaining until next Monday.
+  // an o user exei lavei ban metra tis meres mexri tin epomeni deftera
   let bannedMessage = null;
   if (user && user.status === 'active' && user.cancellationCounter >= 2) {
     const now = new Date();
     const currentDay = now.getDay(); // Sunday=0, Monday=1, Tuesday=2, ... Saturday=6
     let daysUntilMonday;
     if (currentDay === 1) {
-      // If it's Monday, assume the ban lasts until next Monday.
+      // an einai deftera ypethese mexri tin epomeni deftera
       daysUntilMonday = 7;
     } else if (currentDay === 0) {
       daysUntilMonday = 1;

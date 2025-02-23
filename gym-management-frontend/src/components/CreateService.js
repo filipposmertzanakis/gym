@@ -47,7 +47,7 @@ const CreateService = () => {
     try {
       await createService(newService);
       setMessage('Service created successfully');
-      // Reset form values
+      // epanafora pedion formas
       setName('');
       setDescription('');
       setSchedule([{ day: '', time: '', maxCapacity: 0 }]);

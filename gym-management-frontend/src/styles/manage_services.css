@@ -1,4 +1,4 @@
-/* Main container */
+/* kyrio container */
 .services-manager-container {
   max-width: 800px;
   margin: 0 auto;
@@ -8,7 +8,7 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Titles */
+/* titloi*/
 .services-manager-title, .services-manager-subtitle {
   text-align: center;
   color: #333;
@@ -17,7 +17,7 @@
   margin-bottom: 15px;
 }
 
-/* Success/Error Message */
+/* minima epityxias/ apotyxias */
 .services-manager-message {
   text-align: center;
   color: #28a745;
@@ -25,7 +25,7 @@
   margin-bottom: 10px;
 }
 
-/* Form Styling */
+/* styling formas */
 .services-manager-form {
   display: flex;
   flex-direction: column;
@@ -55,7 +55,7 @@ textarea.services-manager-input {
   resize: vertical;
 }
 
-/* Buttons */
+/* koumpia */
 .services-manager-submit, 
 .services-manager-cancel, 
 .services-manager-edit, 
@@ -106,7 +106,7 @@ textarea.services-manager-input {
   background: #e63939;
 }
 
-/* Service List */
+/* lista ypiresion */
 .services-manager-list {
   list-style: none;
   padding: 0;
@@ -116,7 +116,7 @@ textarea.services-manager-input {
   gap: 8px;
 }
 
-/* Individual Service Item */
+/* ksexoristi ypiresia */
 .services-manager-item {
   display: flex;
   width: 50%;
@@ -154,7 +154,7 @@ textarea.services-manager-input {
   color: #28a745;
 }
 
-/* Schedule Section */
+/* kommati programmaton */
 .services-manager-schedule-title {
   font-size: 16px;
   font-weight: bold;
@@ -172,7 +172,7 @@ textarea.services-manager-input {
   flex: 1;
 }
 
-/* Mobile Responsive */
+/* Mobile kommati */
 @media (max-width: 600px) {
   .services-manager-container {
     padding: 10px;

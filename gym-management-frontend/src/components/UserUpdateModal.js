@@ -17,7 +17,7 @@ const UserUpdateModal = ({ user, onClose, onSave }) => {
     },
   });
 
-  // Update the form data if the user prop changes
+  // enimerosi tis formas dedomenon
   useEffect(() => {
     setFormData({
       name: user.name || '',

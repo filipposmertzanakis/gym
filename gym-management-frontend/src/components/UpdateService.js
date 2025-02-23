@@ -39,7 +39,7 @@ const UpdateService = () => {
     try {
       await updateService(selectedService.name, updatedService);
       setMessage(`Service "${selectedService.name}" updated successfully!`);
-      // Refresh the services list
+      //ananeosi listas ypiresion
       const updatedServices = await getServices();
       setServices(updatedServices);
       setSelectedService(null);

@@ -10,10 +10,10 @@ const newsRoutes = require('./routes/newsRoutes');
 const app = express();
 app.use(express.json());
 
-// Enable CORS for all routes
+// energopoiisi cors
 app.use(cors());
 
-// Connect to MongoDB
+// syndesi MongoDB
 connectDB();
 
 // Routes
@@ -22,7 +22,7 @@ app.use('/api/services', serviceRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/news', newsRoutes);
 
-// Start the Server
+// energopoiisi server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

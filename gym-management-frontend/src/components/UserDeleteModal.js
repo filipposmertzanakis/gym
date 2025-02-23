@@ -3,7 +3,7 @@ import '../styles/ServiceModal.css';
 
 
 const UserModal = ({ user, onClose, handleDelete }) => {
-  if (!user) return null; // If no user is provided, return null
+  if (!user) return null; // an den yparxoun xristes epestrepse null
 
   return (
     <div className="modal-overlay">

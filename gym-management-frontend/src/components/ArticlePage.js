@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/Article.css'; // Import the CSS file
+import '../styles/Article.css'; // pernao to css
 
 const ArticlePage = () => {
-  const { articleId } = useParams(); // Extract the article ID from the URL
+  const { articleId } = useParams(); // eksagogi onomatos arthrou apo to url
   const navigate = useNavigate();
 
-  const [article, setArticle] = useState(null); // State to store article details
+  const [article, setArticle] = useState(null); // State gia apothikefsi leptomereion arthrou
   const [error, setError] = useState('');
 
   useEffect(() => {

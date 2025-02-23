@@ -23,13 +23,13 @@ const Login = () => {
     try {
       const user = await loginUser(credentials);
       if (user.status === 'active') {
-        setUser(user); // Set user data in context
+        setUser(user); // 
         console.log('User logged in:', user);
-        navigate('/'); // Redirect to the home page after logging in
+        navigate('/'); // epanafora stin arxiki othoni meta to login
       } else {
         console.error('User is not active:', user.status);
         setMessage(`Your credentials are wrong or don't exist. Please retry`);
-        // Optionally, display a message to the user.
+        // parousiasi minimatos sto xristi
       }
     } catch (error) {
       console.error('Login error:', error);
