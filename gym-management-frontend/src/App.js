@@ -21,9 +21,9 @@ import ManageServices from './components/ManageServices';
 import './styles/modernGym.css';
 import './styles/Home.css';
 
-// HomePage Component
+// HomePage component
 function HomePage() {
-  const { user } = useUser(); // Get the user data from context
+  const { user } = useUser(); 
 
   return (
     <div className='home-container'>
@@ -50,22 +50,22 @@ function HomePage() {
   );
 }
 
-// Main App Component
+// Main App component
 function App() {
-  const { user, logout } = useUser(); // Access the user context and logout function
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for menu toggle
-  const navigate = useNavigate(); // Hook to programmatically navigate
+  const { user, logout } = useUser(); // prosvasi se user context kai logout 
+  const [isMenuOpen, setIsMenuOpen] = useState(false); //  menu toggle
+  const navigate = useNavigate(); 
 
-  // Toggle menu function
+  // Toggle menu 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
-  // Handle logout and redirect to home
+  // diaxeirisi logout kai redirect to home
   const handleLogout = () => {
     logout();
     toggleMenu();
-    navigate('/'); // Redirect to home page
+    navigate('/'); // Redirect to home 
   };
 
   return (

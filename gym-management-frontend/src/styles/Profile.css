@@ -1,4 +1,4 @@
-/* Container for the Profile Component */
+/* container gia to profile component */
 .profile-container {
   max-width: 800px;
   margin: 40px auto;
@@ -9,7 +9,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Header styling */
+/* styling epikefalidas */
 .profile-container h2 {
   text-align: center;
   margin-bottom: 20px;
@@ -17,19 +17,19 @@
   font-size: 2rem;
 }
 
-/* Basic text styling for user details */
+/* styling gia stoixeia xristi */
 .profile-container p {
   font-size: 1rem;
   margin: 10px 0;
   color: var(--text-color);
 }
 
-/* Section wrapper for profile information */
+/*  wrapper gia profile info */
 .profile-details {
   margin-bottom: 30px;
 }
 
-/* Bookings section header */
+/* bookings section header */
 .booking-section h3 {
   border-bottom: 2px solid var(--accent);
   padding-bottom: 5px;
@@ -37,14 +37,14 @@
   color: var(--text-color);
 }
 
-/* Styling for the list of bookings */
+/* styling gia th lista me ta bookings */
 .booking-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* Individual booking item styling */
+/* styling ksexoristou antikeimenoy booking */
 .booking-list li {
   background-color: var(--secondary-bg);
   border: 1px solid var(--border-color);
@@ -59,7 +59,7 @@
   background-color: var(--hover-bg);
 }
 
-/* Styling for error messages */
+/* styling gia minimata sfalmatos */
 .error {
   color: red;
   font-weight: bold;
@@ -67,7 +67,7 @@
   text-align: center;
 }
 
-/* Message shown when the user is not logged in */
+/* minima poy emfanizetai otan o xristis den einai loggedin */
 .login-message {
   text-align: center;
   font-size: 1.1rem;

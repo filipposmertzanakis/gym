@@ -102,7 +102,7 @@ const ManageServices = () => {
       <h2 className="services-manager-title">Manage Services</h2>
       {message && <p className="services-manager-message">{message}</p>}
 
-      {/* Show Form Only When Editing a Service */}
+      {/* deikse ti forma mono otan kano edit */}
       {isFormVisible && (
         <form className="services-manager-form"  onSubmit={handleUpdate}>
           <h3 className="services-manager-subtitle">Editing: {editingService}</h3>
@@ -144,7 +144,7 @@ const ManageServices = () => {
             ))}
           </select>
 
-          {/* Schedules Section */}
+          {/* kommati programmaton */}
           <h4 className="services-manager-subtitle">Schedules</h4>
           {schedules.map((session, index) => (
             <div className="services-manager-schedule-item" key={index}>
@@ -185,7 +185,7 @@ const ManageServices = () => {
         </form>
       )}
 
-      {/* List of Services */}
+      {/* lisa me ypiresies */}
       <h3 className="services-manager-subtitle">Available Services</h3>
       <ul className="services-manager-list">
         {services.map(service => (

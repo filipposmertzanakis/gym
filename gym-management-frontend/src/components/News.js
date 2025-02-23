@@ -15,12 +15,12 @@ const CreateNews = () => {
     author: '',
   });
 
-  const [newsArticles, setNewsArticles] = useState([]); // State to store fetched news articles
+  const [newsArticles, setNewsArticles] = useState([]); // State gia apothikefsi news arthron
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [isFormVisible, setIsFormVisible] = useState(false);
 
-  // Fetch all news articles on component mount
+  // Fetch olon ton arthron
   useEffect(() => {
     const fetchNewsArticles = async () => {
       try {
@@ -71,7 +71,7 @@ const CreateNews = () => {
   };
 
   const handleArticleClick = (articleId) => {
-    navigate(`/news/${articleId}`); // Navigate to the article page
+    navigate(`/news/${articleId}`); //pigaine sti selida me ta arthra
   };
 
   return (

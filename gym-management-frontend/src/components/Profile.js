@@ -24,7 +24,7 @@ const Profile = () => {
     fetchBookings();
   }, [user]);
 
-  // Filter out canceled bookings
+  // vgale ta canceled bookings
   const nonCancelledBookings = bookings.filter(booking => booking.status !== 'cancelled');
 
   const now = new Date();
@@ -32,12 +32,12 @@ const Profile = () => {
   const pendingBookings = nonCancelledBookings.filter(booking => new Date(booking.date) >= now);
 
   const handleCancelBooking = async (booking) => {
-    // Create a Date object from the booking's date and time.
+    // antikeimeno typou date apo to date and time tou booking
     const bookingDateTime = new Date(booking.date);
     const [hours, minutes] = booking.time.split(':').map(Number);
     bookingDateTime.setHours(hours, minutes, 0, 0);
 
-    // Check if the booking starts less than 2 hours from now.
+    // elegkse an ksekinaei se ligotero apo dyo ores
     const twoHoursInMs = 2 * 60 * 60 * 1000;
     if (bookingDateTime - new Date() < twoHoursInMs) {
       setMessage('You cannot cancel a booking less than 2 hours prior to the booking time.');
@@ -47,16 +47,16 @@ const Profile = () => {
     try {
       const response = await cancelBooking(booking._id);
       
-      // Option 1: Update user context using data from the API response if available.
+      
       if (response.updatedUser) {
         setUser(response.updatedUser);
       } else {
-        // Option 2: Manually increment the cancellation counter if the API doesn't return updated user information.
+        // metritis akiroseon +1
         setUser({ ...user, cancellationCounter: (user.cancellationCounter || 0) + 1 });
       }
 
       setMessage('Booking cancelled successfully!');
-      // Remove the cancelled booking from the local state.
+      // afairese to canceled booking
       setBookings(prevBookings => prevBookings.filter(b => b._id !== booking._id));
     } catch (err) {
       setError('Error cancelling booking: ' + (err.response?.data?.error || err.message));

@@ -5,7 +5,7 @@ const connectDB = require('./database');
 
 connectDB();
 
-// Example document
+// paradeigma arthrou
 const createNews = async () => {
   try {
     const newsArticle = new News({
