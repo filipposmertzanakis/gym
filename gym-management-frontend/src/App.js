@@ -30,13 +30,13 @@ function HomePage() {
       <h2>
         {user ? (
           <>
-            Welcome, <span style={{ color: 'var(--accent)' }}>{user.username}</span>, to the Gym Management System
+            Welcome, <span style={{ color: 'var(--accent)' }}>{user.username}</span>, to the DS GYM!!
           </>
         ) : (
-          'Welcome to the Gym Management System'
+          'Welcome to the DS GYM!!'
         )}
       </h2>
-      <p>This is your one-stop solution for gym management.</p>
+      <p>This is your one-stop solution for your new GymLife!!</p>
       <div className="home-content">
         <h3>Features:</h3>
         <ul>
@@ -44,7 +44,7 @@ function HomePage() {
           <li>Manage memberships</li>
           <li>Access premium services</li>
         </ul>
-        <Link to="/register" className='lo'>Register</Link>
+       
       </div>
     </div>
   );
