@@ -20,7 +20,7 @@ import { useUser } from './context/UserContext';
 import ManageServices from './components/ManageServices';
 import './styles/modernGym.css';
 import './styles/Home.css';
-
+dsadsadsa
 // HomePage component
 function HomePage() {
   const { user } = useUser(); 
