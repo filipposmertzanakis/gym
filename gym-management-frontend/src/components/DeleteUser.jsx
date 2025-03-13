@@ -13,12 +13,13 @@ const DeleteUser = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
-
+  
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const data = await getUsers();
-        setUsers(data);
+        const activeUsers = data.filter(user => user.status === 'active');
+        setUsers(activeUsers);
       } catch (error) {
         setMessage(`Error fetching users: ${error.message || 'Unknown error'}`);
       }
